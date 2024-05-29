@@ -1,9 +1,34 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
-import { UserAuth } from '../context/AuthContext'
+import { UserAuth, googleSignIn, logOut } from '../context/AuthContext'
 
 const Navbar = () => {
-  const {user} = UserAuth()
+  const {user,googleSignIn, logOut} = UserAuth()
+  const [loading, setLoading] = useState(true)
+
+const handleSignIn = async () => {
+  try {
+    await googleSignIn()
+  } catch(error) {
+    console.log(error)
+  } 
+}
+
+const handleSignOut = async () => {
+  try {
+    await logOut()
+  } catch(error) {
+    console.log(error)
+  }
+}
+
+useEffect(() => {
+  const checkAuthentication = async() => {
+    await new Promise((resolve) => setTimeout(resolve, 50))
+    setLoading(false)
+  }
+  checkAuthentication()
+}, [user])
 
   return (
     <div className='h-20 w-full border-b-2 flex items-center justify-between p-2'>
@@ -16,19 +41,31 @@ const Navbar = () => {
           <Link href='/about'> About </Link>
         </li>
         
+        {!user ? null : (
         <li className= 'p-2 cursor pointer'> 
-          <Link href='/profile'> Profile </Link>
-        </li>
+        <Link href='/profile'> Profile </Link>
+      </li>
+        )}
       </ul>
+
+      {loading ? null : !user ? (
+
+        //display sign in options for unsigned in user
       <ul className="flex">
-        <li className ='p-2 cursor-pointer'>
+        <li onClick= {handleSignIn} className ='p-2 cursor-pointer'>
           Login
         </li> 
 
-        <li className ='p-2 cursor-pointer'>
-          Login
+        <li onClick= {handleSignIn} className ='p-2 cursor-pointer'>
+          Sign Up
         </li> 
-      </ul>
+      </ul>) : (
+        //display sign out option for signed in user
+      <div> 
+        <p>Welcome, {user.displayName}</p>
+        <p className= "cursor-pointer"onClick= {handleSignOut}> Sign Out</p>
+      </div>
+    ) }
     </div>
   )
 }
