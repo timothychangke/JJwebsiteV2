@@ -1,0 +1,11 @@
+'use client';
+
+const SignupPage = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default SignupPage
