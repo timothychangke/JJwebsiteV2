@@ -6,7 +6,8 @@ import { initializeApp } from 'firebase/app';
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth } from 'firebase/auth';
 
-console.log(process.env.NEXT_PUBLIC_API_KEY);
+//debugging .env
+//console.log(process.env.NEXT_PUBLIC_API_KEY);
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -19,6 +20,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-console.log(process.env);
+
+//debugging .env
+//console.log(process.env);
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);

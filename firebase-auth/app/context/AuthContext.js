@@ -1,4 +1,5 @@
 import { useContext, createContext, useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   signInWithPopup,
   signOut,
@@ -11,10 +12,14 @@ const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const router = useRouter();
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    signInWithPopup(auth, provider)
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const logOut = () => {
@@ -24,10 +29,13 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currUser) => {
       setUser(currUser);
+      if (currUser) {
+        router.push('/'); 
+      }
     });
 
     return () => unsubscribe();
-  }, [user]);
+  }, [router]);
 
   return (
     <AuthContext.Provider value={{ user, googleSignIn, logOut }}>
