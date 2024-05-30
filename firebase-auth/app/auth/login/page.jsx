@@ -26,14 +26,14 @@ const LoginPage = () => {
   };
   return (
     <>
-      <Card className="p-6 rounded-lg shadow-xl xl:w-1/4 md:w-1/2 ">
+      <Card className="p-6 rounded-lg shadow-xl xl:w-1/4 md:w-1/2 m-auto">
         <CardHeader>
           <div className="w-full flex flex-col gap-y-4 items-center justify-center">
             <h1 className="text-4xl font-semibold">Login</h1>
             <p className="text-muted-foreground text-sm">Sign in to your account</p>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex flex-col items-center justify-center">
           <Button
             variant="outline"
             className="mb-5 w-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-semibold py-2 px-4 rounded transition-colors duration-300"
