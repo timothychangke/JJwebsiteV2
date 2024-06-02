@@ -26,7 +26,7 @@ const LoginPage = () => {
   };
   return (
     <>
-      <Card className="p-6 rounded-lg shadow-xl xl:w-1/4 md:w-1/2 m-auto">
+      <Card className="p-6 rounded-lg shadow-xl xl:w-1/4 md:w-1/2 m-auto mt-20">
         <CardHeader>
           <div className="w-full flex flex-col gap-y-4 items-center justify-center">
             <h1 className="text-4xl font-semibold">Login</h1>
@@ -49,7 +49,7 @@ const LoginPage = () => {
                 }, 100);
               }}
           >
-            Login with{' '}
+            Continue with{' '}
             <Image
               src={isHovered ? google_logo_white : google_logo}
               width={20}
