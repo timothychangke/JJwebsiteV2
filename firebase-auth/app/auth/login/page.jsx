@@ -13,6 +13,17 @@ import { UserAuth } from '../../context/AuthContext';
 import Image from 'next/image';
 import google_logo from '../../../public/google_logo.png';
 import google_logo_white from '../../../public/google_logo_white.png';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { registerSchema } from '@/schema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 
 const LoginPage = () => {
   const { googleSignIn } = UserAuth();
@@ -24,13 +35,27 @@ const LoginPage = () => {
       console.log(error);
     }
   };
+  const form = useForm({
+    resolver: zodResolver(registerSchema),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      position: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
+  });
+  const onSubmit = () => {};
   return (
     <>
       <Card className="p-6 rounded-lg shadow-xl xl:w-1/4 md:w-1/2 m-auto mt-20">
         <CardHeader>
           <div className="w-full flex flex-col gap-y-4 items-center justify-center">
             <h1 className="text-4xl font-semibold">Login</h1>
-            <p className="text-muted-foreground text-sm">Sign in to your account</p>
+            <p className="text-muted-foreground text-sm">
+              Sign in to your account
+            </p>
           </div>
         </CardHeader>
         <CardContent className="flex flex-col items-center justify-center">
@@ -44,10 +69,10 @@ const LoginPage = () => {
               }, 100);
             }}
             onMouseLeave={() => {
-                setTimeout(() => {
-                  setIsHovered(false);
-                }, 100);
-              }}
+              setTimeout(() => {
+                setIsHovered(false);
+              }, 100);
+            }}
           >
             Continue with{' '}
             <Image
@@ -63,11 +88,49 @@ const LoginPage = () => {
             <div class="mx-4 text-gray-500">or</div>
             <div class="flex-grow border-t border-gray-300"></div>
           </div>
-          <Input type="email" className="mb-5 mt-5" placeHolder='Email'/>
-          <Input type="password" className="mb-5" placeHolder='Password'/>
-          <Button type="submit" className="w-full">
-            Login
-          </Button>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-5 w-full"
+            >
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        type="email"
+                        placeHolder="Email"
+                        className="mb-5 mt-5"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        type="password"
+                        placeHolder="Password"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full">
+                Login
+              </Button>
+            </form>
+          </Form>
         </CardContent>
         <CardFooter>
           <Button
