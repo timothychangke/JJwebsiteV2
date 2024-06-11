@@ -1,0 +1,79 @@
+.container {
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    color: white;
+    background-color: #8a2be2;
+    padding: 20px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 4rem; /* Make the header bigger */
+    font-weight: bold; /* Make the header bolder */
+    margin: 0;
+  }
+  
+  .info {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .infoItem {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+  }
+  
+  .infoItem span {
+    margin-right: 5px;
+    font-size: 1.5rem;
+  }
+  
+  .intro {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .description {
+    font-size: 1.5rem; /* Make the description bigger */
+    font-weight: bold; /* Make the description bolder */
+  }
+  
+  .videoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .video {
+    width: 60%; /* Make the video smaller */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .background, .about {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .paragraph {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: justify;
+  }
+  
