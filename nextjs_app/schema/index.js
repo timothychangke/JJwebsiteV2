@@ -20,3 +20,12 @@ export const registerSchema = zod.object({
     message: 'Password must be at least 8 characters long',
   }),
 });
+
+export const loginSchema = zod.object({
+  email: zod.string().email({
+    message: 'Enter a valid Email',
+  }),
+  password: zod.string().min(8, {
+    message: 'Password must be at least 8 characters long',
+  }),
+});

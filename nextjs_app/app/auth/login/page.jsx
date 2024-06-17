@@ -7,9 +7,9 @@ import {
 } from '@/components/ui/card';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Button } from '../../../components/ui/button';
-import { Input } from '../../../components/ui/input';
-import { UserAuth } from '../../context/AuthContext';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+// import { UserAuth } from '../../../context/AuthContext';
 import Image from 'next/image';
 import google_logo from '../../../public/google_logo.png';
 import google_logo_white from '../../../public/google_logo_white.png';
@@ -21,13 +21,17 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { registerSchema } from '@/schema';
+import { loginSchema } from '@/schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/navigation'
 
 const LoginPage = () => {
-  const { googleSignIn } = UserAuth();
+  // const { googleSignIn } = UserAuth();
+  const router = useRouter()
   const [isHovered, setIsHovered] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handleSignIn = async () => {
     try {
       await googleSignIn();
@@ -36,17 +40,36 @@ const LoginPage = () => {
     }
   };
   const form = useForm({
-    resolver: zodResolver(registerSchema),
+    resolver: zodResolver(loginSchema),
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      position: '',
       email: '',
       password: '',
-      confirmPassword: '',
     },
   });
-  const onSubmit = () => {};
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        toast.error(errorData.error);
+        throw new Error(errorData.error || 'Failed to login');
+      }
+      console.log(response)
+      toast.success('Login successful');
+      //need to dispatch resopnse into redux store
+      router.push("/")
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };;
   return (
     <>
       <Card className="p-6 rounded-lg shadow-xl xl:w-1/4 md:w-1/2 m-auto mt-20">
@@ -80,13 +103,14 @@ const LoginPage = () => {
               width={20}
               height={20}
               className="ml-1 mb-1"
+              alt='google logo'
             />
             oogle
           </Button>
-          <div class="flex items-center">
-            <div class="flex-grow border-t border-gray-300"></div>
-            <div class="mx-4 text-gray-500">or</div>
-            <div class="flex-grow border-t border-gray-300"></div>
+          <div className="flex items-center">
+            <div className="flex-grow border-t border-gray-300"></div>
+            <div className="mx-4 text-gray-500">or</div>
+            <div className="flex-grow border-t border-gray-300"></div>
           </div>
           <Form {...form}>
             <form
@@ -102,7 +126,7 @@ const LoginPage = () => {
                       <Input
                         {...field}
                         type="email"
-                        placeHolder="Email"
+                        placeholder="Email"
                         className="mb-5 mt-5"
                       />
                     </FormControl>
@@ -119,7 +143,7 @@ const LoginPage = () => {
                       <Input
                         {...field}
                         type="password"
-                        placeHolder="Password"
+                        placeholder="Password"
                       />
                     </FormControl>
                     <FormMessage />

@@ -26,8 +26,14 @@ import Link from 'next/link';
 import { registerSchema } from '@/schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/navigation'
+
 
 const SignupPage = () => {
+  const router = useRouter()
+  const [loading, setLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -39,7 +45,28 @@ const SignupPage = () => {
       confirmPassword: '',
     },
   });
-  const onSubmit = () => {};
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        toast.error(errorData.error);
+        throw new Error(errorData.error || 'Failed to register');
+      }
+      toast.success('Registration successful');
+      router.push("/auth/login")
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <>
       <Card className="p-6 rounded-lg shadow-xl xl:w-1/4 md:w-1/2 m-auto mt-20">
@@ -60,8 +87,8 @@ const SignupPage = () => {
                   name="firstName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormControl>
-                        <Input {...field} placeHolder="First Name" />
+                      <FormControl>className
+                        <Input {...field} placeholder="First Name" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -73,7 +100,7 @@ const SignupPage = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input {...field} placeHolder="Last Name" />
+                        <Input {...field} placeholder="Last Name" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -110,14 +137,14 @@ const SignupPage = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input {...field} type="email" placeHolder="Email" />
+                      <Input {...field} type="email" placeholder="Email" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
               <FormField
-                control={form.control}
+                control={Form.control}
                 name="password"
                 render={({ field }) => (
                   <FormItem>
@@ -125,7 +152,7 @@ const SignupPage = () => {
                       <Input
                         {...field}
                         type="password"
-                        placeHolder="Password"
+                        placeholder="Password"
                       />
                     </FormControl>
                     <FormMessage />
@@ -142,7 +169,7 @@ const SignupPage = () => {
                       <Input
                         {...field}
                         type="password"
-                        placeHolder="Confirm Password"
+                        placeholder="Confirm Password"
                       />
                     </FormControl>
                     <FormMessage />
