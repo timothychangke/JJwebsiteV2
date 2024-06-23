@@ -23,5 +23,5 @@ const firebaseConfig = {
 
 //debugging .env
 //console.log(process.env);
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+// const app = initializeApp(firebaseConfig);
+// export const auth = getAuth(app);
