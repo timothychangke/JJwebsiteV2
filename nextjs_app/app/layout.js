@@ -14,6 +14,36 @@ export default function RootLayout({ children }) {
         {/* <Navbar /> */}
         <Toaster position="bottom-right" />
         {children}
+        <div className='w-full h-px bg-gray-400'></div>
+        <footer className='text-md text-center py-12 bg-slate-200'>
+          <div className='sm:flex w-full max-w-4xl mx-auto justify-between'>
+            <div className='w-96 sm:w-auto mx-auto sm:mx-0'>
+              <div className='flex justify-center sm:justify-normal'>
+                <div className='rounded-full ml-4 h-12 w-12 bg-gray-500'></div>
+                <div className='rounded-full ml-4 h-12 w-12 bg-gray-500'></div>
+                <div className='rounded-full ml-4 h-12 w-12 bg-gray-500'></div>
+                <div className='rounded-full ml-4 h-12 w-12 bg-gray-500'></div>
+              </div>
+              <div className='flex justify-center sm:justify-normal items-center mt-8 mx-auto'>
+                <div className='rounded-full ml-4 h-12 w-20 bg-gray-500'></div>
+                <p className='text-xl ml-4'>Jalan Journey</p>
+              </div>
+            </div>
+            <div className='w-full sm:w-auto mt-10 text-center sm:text-left sm:flex sm:mr-8 sm:mt-0'>
+              <div className='sm:mr-10 md:mr-20'>
+                <p><a href="#">Sign in</a></p>
+                <p><a href="#">Affiliate Program</a></p>
+                <p><a href="#">Jobs</a></p>
+              </div>
+              <div>
+                <p><a href="#">Help</a></p>
+                <p><a href="#">Privacy Policy</a></p>
+                <p><a href="#">Terms & Service</a></p>
+              </div>
+            </div>
+          </div>
+          <p className='text-center mt-12'>&copy; 2024 Jalan Journey. All rights reserved.</p>
+        </footer>
       </body>
     </html>
   );
