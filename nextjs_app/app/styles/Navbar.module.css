@@ -1,0 +1,105 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+}
+
+.logoWithPhoto {
+  display: flex;
+  align-items: center;
+}
+
+.photo {
+  margin-right: 10px; /* Adjust spacing between photo and logo */
+}
+
+.photo img {
+  width: 60px; /* Adjust photo width as needed */
+  height: 60px; /* Adjust photo height as needed */
+  border-radius: 20%; /* Optional: Rounded photo */
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the main links horizontally */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+.navLinks li {
+  margin-right: 40px;
+}
+
+.navLinks a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navLinks a:hover {
+  color: #4caf50;
+}
+
+.regLinks {
+  display: flex;
+  align-items: center;
+}
+
+.regLinks li {
+  margin-left: 20px;
+}
+
+.regLinks a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.regLinks a:hover {
+  color: #4caf50;
+}
+
+.button {
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.buttonTransparent {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white; /* Optional: Add border for visibility */
+}
+
+.buttonTransparent:hover {
+  background-color: transparent;
+  color: green;
+  border: 1px solid green;
+}
+
+.buttonPurple {
+  background-color: darkmagenta;
+  color: white;
+  border:1px solid white;
+}
+
+.buttonPurple:hover {
+  background-color: purple; 
+  color: green;
+  border: 1px solid green;
+}
