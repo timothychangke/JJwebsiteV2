@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'Garet';
+  src: url("/fonts/Garet-Book.otf");
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: hsl(35, 44%, 90%); 
+  box-shadow: 90 2px 4px rgba(55, 55, 55, 0.1);
+  transition: 0.3s;
+  font-family: 'Garet', sans-serif;
+}
+
+.logo {
+  width: 85px; 
+  margin: -10px;
+  height: auto;
+}
+
+.navButton {
+  background: none;
+  border: none;
+  color: black; /* Adjust text color as needed */
+  font-size: 1rem;
+  margin: 0px 0px;
+  font-family: 'Garet', sans-serif;
+  cursor: pointer;
+  transition: 0.7s;
+  padding: 22px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.16); 
+}
+
+.navButton:hover {
+  background: #674c93;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0px 0px;
+  padding: 22px 10px;
+  font-family: 'Garet', sans-serif;
+  cursor: pointer; 
+  transition: 0.7s;
+  border: 1px solid #674c93; 
+
+}
+
+.navButtonContainer {
+  padding-left: 2px;
+}
+
+.username {
+  margin-left: auto;
+  color: black; 
+  font-size: 1rem;
+  padding: 0px 20px;
+}

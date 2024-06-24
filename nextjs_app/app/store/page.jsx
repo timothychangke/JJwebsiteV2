@@ -1,8 +1,11 @@
 'use client';
 import { useState } from 'react';
+import StoreNavbar from '../components/StoreNavbar';
 import styles from './store.module.css';
 
 export default function Store() {
+
+
   const [emails, setEmails] = useState(['']);
   const [selectedGame, setSelectedGame] = useState('');
   const [hoveredGame, setHoveredGame] = useState(null);
@@ -36,10 +39,8 @@ export default function Store() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.logo}>
-        <img src="/JJLogo.png" alt="Company Logo" />
-      </div>
-      <h1 className={styles.header}>Store / Prepare your Program</h1>
+      <StoreNavbar username={"User"}/>
+      
       <h2 className={`${styles.title}`}>Program Description</h2>
       <h2 className={styles.text}> Let us know some details about your program and we'll get everything set up!</h2>
       <div className={`${styles.segment} ${styles.descriptionSegment}`}>
@@ -65,9 +66,6 @@ export default function Store() {
               key={game.name}
               className={`${styles.gameBox} ${selectedGame === game.name ? styles.selected : ''}`}
               onClick={() => handleGameSelect(game.name)}
-              onMouseEnter={() => setHoveredGame(game.name)}
-              //perhaps we can include matt's sites as a link here
-              onMouseLeave={() => setHoveredGame(null)}
             >
               <span className={selectedGame === game.name ? styles.emojiSelected : styles.emoji}>
                 {game.emoji}
@@ -75,11 +73,6 @@ export default function Store() {
               <p className={selectedGame === game.name ? styles.textSelected : styles.text}>
                 {game.name}
               </p>
-              {hoveredGame === game.name && (
-                <div className={styles.popup}>
-                  <p>{game.description}</p>
-                </div>
-              )}
             </div>
           ))}
         </div>

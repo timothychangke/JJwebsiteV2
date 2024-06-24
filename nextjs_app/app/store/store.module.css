@@ -1,6 +1,12 @@
+@font-face {
+  font-family: 'Garet';
+  src: url("/fonts/Garet-Book.otf");
+}
+
 .container {
-  background-color: rgb(184, 184, 184);
-  padding: 20px;
+  background: rgb(60,45,84);
+  background: linear-gradient(0deg, rgba(60,45,84,1) 0%, rgba(103,76,147,1) 100%);
+  font-family: 'Garet', sans-serif;
 }
 
 .logo {
@@ -10,30 +16,31 @@
 }
 
 .logo img {
-  width: 120px; /* Adjust as needed */
+  width: 120px; 
   height: auto;
 }
 
 .header {
-  color: purple;
-  font-size: 0.9rem;
+  color: rgb(232, 232, 232);
+  font-size: 1rem;
   font-style: bold;
+  padding-top: 2.3rem;
 }
 
 .title {
-  color: purple;
+  color: rgb(232, 232, 232);
   font-size: 3rem;
   font-weight: bolder;
   padding: 10px 0px;
 }
 
 .text {
-  color: black;
+  color: rgb(0, 0, 0);
   font-size: 1rem; 
-  padding: 2px 0px;
+  padding: 10px 0px;
 }
 .segment {
-  background-color: #9a829c; 
+  background-color: #777874; 
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 20px;
@@ -44,7 +51,7 @@
   font-weight: bold;
   margin-bottom: 5px;
   font-size: 1.2rem;
-  color: #2d2d2d;
+  color: rgb(0, 0, 0);
 }
 
 .textField {
