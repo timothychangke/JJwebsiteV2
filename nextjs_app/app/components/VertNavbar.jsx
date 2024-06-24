@@ -17,7 +17,6 @@ export default function VertNavbar() {
         ☰
       </button>
       <div className={styles.navbarHeader}>
-
         <img src= "/JJLogo.png" alt="Company Logo" />
       </div>
       <div className={styles.navContent}>

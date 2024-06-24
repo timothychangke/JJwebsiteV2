@@ -14,12 +14,15 @@
   display: flex;
   flex-direction: column;
   z-index: 1000; 
-  border-radius: 0px 70px 0px 0px;
+  border-radius: 0px 30px 0px 0px;
 }
 
 .navbarHeader {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;
+  gap: 60px;
+  background-color: #b99cc3;
+  border-radius: 0px 30px 0px 0px;
 }
 
 .navbarHeader img {
@@ -27,21 +30,7 @@
   margin: -15px 1px;
   height: auto;
   transition: 0.5s;
-}
-
-.navbarHeader img:hover {
-  width:120px;
-  margin: -15px 1px;
-  height:auto;
-  transition: 0.5s;
-}
-
-.navbarHeader h1 {
-  margin: 0;
-  padding: 0px 15px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: black;
+  padding: 2px;
 }
 
 
@@ -62,13 +51,32 @@
   cursor: pointer;
   padding: 5px 10px;
   z-index: 1001; 
+  transition: 0.5s;
+  visibility: 1;
+  opacity: 1;
+}
+
+.navToggle:hover {
+  position: absolute;
+  top: 10px;
+  left: 260px; 
+  background: rgba(42, 42, 42, 90%);
+  border-radius: 50px;
+  border: none;
+  color: #dbdbdb;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 20px 10px;
+  z-index: 1001; 
+  transition: 0.5s;
 }
 
 .navContent {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px 10px;
+  padding: 3px 10px;
 }
 
 .navContent button {
@@ -91,7 +99,7 @@
 }
 
 .navBottom {
-  margin-top: auto;
+  vertical-align: bottom;
   width: 100%;
   display: flex;
   gap: 20px;
@@ -102,6 +110,14 @@
   border: none;
   color: black;
   font-size: 1rem;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.navBottom button:hover {
+  border: none;
+  color: black;
+  font-size: 1.1rem;
   margin: 10px 0;
   cursor: pointer;
 }
