@@ -1,7 +1,12 @@
+@font-face {
+  font-family: 'Garet';
+  src: url("/fonts/Garet-Book.otf");
+}
+
 .container {
   background: rgb(60,45,84);
   background: linear-gradient(0deg, rgba(60,45,84,1) 0%, rgba(103,76,147,1) 100%);
-  padding: 20px;
+  font-family: 'Garet', sans-serif;
 }
 
 .logo {

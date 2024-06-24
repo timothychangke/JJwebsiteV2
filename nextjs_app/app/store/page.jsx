@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import VertNavbar from '../components/VertNavbar';
+import StoreNavbar from '../components/StoreNavbar';
 import styles from './store.module.css';
 
 export default function Store() {
@@ -39,9 +39,8 @@ export default function Store() {
 
   return (
     <div className={styles.container}>
-      <VertNavbar/>
+      <StoreNavbar username={"User"}/>
       
-      <h1 className={styles.header}>Store / Prepare your Program</h1>
       <h2 className={`${styles.title}`}>Program Description</h2>
       <h2 className={styles.text}> Let us know some details about your program and we'll get everything set up!</h2>
       <div className={`${styles.segment} ${styles.descriptionSegment}`}>
