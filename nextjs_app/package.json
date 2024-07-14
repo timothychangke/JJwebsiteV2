@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
+    "@next/font": "^14.2.5",
     "@radix-ui/react-checkbox": "^1.1.0",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-select": "^2.0.0",
@@ -17,6 +18,7 @@
     "@radix-ui/react-tabs": "^1.1.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "ci": "^2.3.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",

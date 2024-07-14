@@ -1,0 +1,131 @@
+.container {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #674C93;
+  }
+  
+  .header {
+    background-color: #434f8b;
+    color: white;
+    padding: 1rem;
+  }
+  
+  
+  .logo img {
+    width: 50px;
+  }
+  
+  .menu a {
+    color: white;
+    margin-right: 1rem;
+    text-decoration: none;
+  }
+  
+  .auth button {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #00aaff;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .banner {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+    background: linear-gradient(to top, #674c93bb, #674c93bb), url('/images/FrameChildrenThinking.svg');
+    background-size: cover, cover;
+    background-position: center, center;
+  }
+
+  .main {
+    text-align: left;
+    color: white;
+  }
+  
+  .main h1 {
+
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    font-size: 4rem;
+    font-weight: bold;
+  }
+  
+  .main h2 {
+    padding-left: 1rem;
+    font-size: 2rem;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .tabs button {
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .tabs .active {
+    background-color: #4b0082;
+    color: white;
+  }
+  
+  .games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .game {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    margin: 1rem;
+    padding: 1rem;
+    width: 200px;
+    text-align: left;
+  }
+  
+  .game h3 {
+    margin-top: 0;
+  }
+  
+  .game ul {
+    padding-left: 1.5rem;
+  }
+
+  
+  .footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: #2d2f39;
+    color: white;
+    padding: 2rem;
+  }
+  
+  .footerColumn {
+    text-align: left;
+  }
+  
+  .footerColumn h4 {
+    margin-bottom: 1rem;
+  }
+  
+  .footerColumn ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footerColumn ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footerColumn ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  

@@ -1,0 +1,75 @@
+.card {
+    background-color: #F1E8DB;
+    border: 4px solid #306054;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    color: black;
+    margin: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin-bottom: 1rem; 
+  }
+  
+  .image {
+    object-fit: cover;
+    width: auto;
+    height: auto;
+  }
+  
+  .content {
+    padding-bottom: 3rem; 
+  }
+  
+  .content h3 {
+    margin-bottom: 0.5rem; 
+    font-weight: bold;
+  }
+  
+  .content p {
+    margin-bottom: 1rem; 
+  }
+  
+  .content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem; 
+  }
+  
+  .values li {
+    font-weight: bolder;
+    margin-bottom: 0.5rem; 
+  }
+  
+  .buttonContainer {
+    position: absolute;
+    bottom: -1rem; 
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .button {
+    background-color: #A2C17C;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .button:hover {
+    background-color: #86a166;
+  }
+  

@@ -1,105 +1,109 @@
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  background-image: url('/images/Header.svg'), linear-gradient(180deg, rgba(8,71,56,1) 31%, rgba(103,77,147,1) 100%);
+  background-size: cover, cover;
+  background-position: center, center;
+  margin-bottom: -2.9rem;
 }
 
-.logoWithPhoto {
-  display: flex;
-  align-items: center;
+.logo img {
+  width: 90px;
+  margin: -5px -5px;
+
 }
 
-.photo {
-  margin-right: 10px; /* Adjust spacing between photo and logo */
+.menuContainer {
+  position: relative;
 }
 
-.photo img {
-  width: 60px; /* Adjust photo width as needed */
-  height: 60px; /* Adjust photo height as needed */
-  border-radius: 20%; /* Optional: Rounded photo */
+.menu {
+  cursor: pointer;
+  margin-right: 1rem;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
+.dropdown {
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  background-color: rgba(128, 128, 128, 0.8);
+  color: white;
+  border-radius: 4px;
+  padding: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
   color: white;
 }
 
-.navLinks {
-  list-style: none;
+.dropdown a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.links {
   display: flex;
-  align-items: center;
-  justify-content: center; /* Center the main links horizontally */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
+  justify-content: center;
+  flex: 1;
 }
 
-.navLinks li {
-  margin-right: 40px;
-}
-
-.navLinks a {
-  color: white;
+.links a {
+  margin: 1.2rem;
   text-decoration: none;
-  transition: color 0.3s;
+  color: white;
 }
 
-.navLinks a:hover {
-  color: #4caf50;
-}
-
-.regLinks {
+.auth {
   display: flex;
-  align-items: center;
 }
 
-.regLinks li {
-  margin-left: 20px;
-}
-
-.regLinks a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.regLinks a:hover {
-  color: #4caf50;
-}
-
-.button {
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.buttonTransparent {
+.auth button {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.3rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.363);
   background-color: transparent;
   color: white;
-  border: 1px solid white; /* Optional: Add border for visibility */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 10px;
 }
 
-.buttonTransparent:hover {
-  background-color: transparent;
-  color: green;
-  border: 1px solid green;
+.auth .signup {
+  border-radius: 1;
+  background-color: #4b0082;
 }
 
-.buttonPurple {
-  background-color: darkmagenta;
-  color: white;
-  border:1px solid white;
+.auth button:hover {
+  background-color: white;
+  color: #4b0082;
 }
 
-.buttonPurple:hover {
-  background-color: purple; 
-  color: green;
-  border: 1px solid green;
+.vineContainer {
+  position: absolute;
+  bottom: -15px;
+  margin-top: 2rem; 
+  width: 100%; 
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+
+}
+
+.vine {
+  width: 100%; 
+  height: auto;
 }
