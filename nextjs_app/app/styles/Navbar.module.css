@@ -15,16 +15,18 @@
   background-size: cover, cover;
   background-position: center, center;
   margin-bottom: -2.9rem;
+  padding: 0 1rem;
+  flex-wrap: wrap; /* Ensure items wrap within the flex container */
 }
 
 .logo img {
   width: 90px;
   margin: -5px -5px;
-
 }
 
 .menuContainer {
   position: relative;
+  order: 1; /* Ensure the menuContainer is first in order */
 }
 
 .menu {
@@ -58,6 +60,7 @@
   display: flex;
   justify-content: center;
   flex: 1;
+  order: 2; /* Ensure the links are in the middle */
 }
 
 .links a {
@@ -68,6 +71,7 @@
 
 .auth {
   display: flex;
+  order: 3; /* Ensure the auth buttons are last */
 }
 
 .auth button {
@@ -95,15 +99,69 @@
 .vineContainer {
   position: absolute;
   bottom: -15px;
-  margin-top: 2rem; 
+  margin-top: 21rem; 
   width: 100%; 
   display: flex;
   justify-content: center;
   z-index: 999;
-
 }
 
 .vine {
   width: 100%; 
   height: auto;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 1200px) {
+  .links a {
+    margin: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .auth button {
+    padding: 0.2rem 0.8rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .links a {
+    margin: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .auth button {
+    padding: 0.2rem 0.6rem;
+    margin: 0.3rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .logo img {
+    width: 70px;
+    margin: -3px -3px;
+  }
+
+  .links a {
+    margin: 0.3rem;
+    font-size: 0.7rem;
+  }
+
+  .auth button {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+  }
+
 }

@@ -9,7 +9,7 @@ import styles from '../styles/GamesCatalogue.module.css'
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Navbar />
+
       
       <Head>
         <title>Institutions - Level Up Classroom Learning With Play</title>
@@ -32,9 +32,7 @@ export default function Home() {
 
         <div className={styles.games}>
           <GameGrid/>
-
         </div>
-        <CTA/>
       </main>
     </div>
   )
