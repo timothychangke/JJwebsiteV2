@@ -3,10 +3,6 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-body {
-  font-family: 'Roboto', sans-serif;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -78,4 +74,16 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  @font-face {
+    font-family: 'Inter-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/Inter-Regular.otf) format('otf');
+  }
+}
+
+body {
+  font-family: 'Garet-Book', sans-serif;
 }
