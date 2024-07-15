@@ -76,11 +76,11 @@
   }
 
   @font-face {
-    font-family: 'Garet-Book';
+    font-family: 'Inter-Regular';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(/fonts/Garet-Book.otf) format('otf');
+    src: url(/fonts/Inter-Regular.otf) format('otf');
   }
 }
 

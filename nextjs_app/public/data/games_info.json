@@ -5,7 +5,7 @@
       "slug":"institutions",
       "data":[
         {
-          "image": "runway-logo.png",
+          "image": "Runway.png",
           "title": "Runway",
           "description": "Learn to balance your budget and your environmental impact",
           "values":["Fast Fashion","Budgeting","Decision-Making"],
@@ -13,7 +13,7 @@
           "link":""
         },
         {
-          "image": "recycleme-logo.png",
+          "image": "RecycleMe.png",
           "title": "RecycleMe",
           "description": "Learn to recycle in a competitive “Overcooked” style game",
           "values":["Recycling Literacy","Materials Identification"],
@@ -21,7 +21,7 @@
           "link":""
         },
         {
-          "image": "supermarketscramble-logo.png",
+          "image": "SupermarketScramble.png",
           "title": "Supermarket Scramble",
           "description": "Learn to budget, empathise and prioritise in a real-world scenario",
           "values":["Financial Literacy","Social Inequality","Budgeting"],
@@ -29,7 +29,7 @@
           "link":""
         },
         {
-          "image": "balancethebistro-logo.png",
+          "image": "BalanceTheBistro.png",
           "title": "Balance the Bistro",
           "description": "Learn to be aware of the biases and issues that lead to food waste",
           "values":["Food Waste","Educated Judgements","Contextual Clueing"],
@@ -59,7 +59,7 @@
       "slug":"organisations",
       "data":[
         {
-          "image": "runway-logo.png",
+          "image": "Runway.png",
           "title": "Runway",
           "description": "Learn to balance your budget and your environmental impact",
           "values":["Fast Fashion","Budgeting","Decision-Making"],
@@ -67,7 +67,7 @@
           "link":""
         },
         {
-          "image": "balancethebistro-logo.png",
+          "image": "BalanceTheBistro.png",
           "title": "Balance the Bistro",
           "description": "Learn to be aware of the biases and issues that lead to food waste",
           "values":["Food Waste","Educated Judgements","Contextual Clueing"],
@@ -97,7 +97,7 @@
       "slug":"individuals",
       "data":[
         {
-          "image": "recycleme-logo.png",
+          "image": "RecycleMe.png",
           "title": "RecycleMe",
           "description": "Learn to recycle in a competitive “Overcooked” style game",
           "values":["Recycling Literacy","Materials Identification"],
@@ -105,7 +105,7 @@
           "link":""
         },
         {
-          "image": "supermarketscramble-logo.png",
+          "image": "SupermarketScramble.png",
           "title": "Supermarket Scramble",
           "description": "Learn to budget, empathise and prioritise in a real-world scenario",
           "values":["Financial Literacy","Social Inequality","Budgeting"],
