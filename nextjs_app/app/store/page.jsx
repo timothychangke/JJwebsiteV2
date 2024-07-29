@@ -1,123 +1,74 @@
 'use client';
 import { useState } from 'react';
-import StoreNavbar from '../components/StoreNavbar';
-import styles from './store.module.css';
+import Image from 'next/image';
+import Sidebar from '../components/store/Sidebar';
+import { games_info } from "../../public/data/games_info.json";
+import { store_offerings } from "../../public/data/store_offerings.json";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import { GameItem } from "../components/homepage/Catalogue.jsx";
+import { Button } from '@/components/ui/button';
 
 export default function Store() {
-
-
-  const [emails, setEmails] = useState(['']);
-  const [selectedGame, setSelectedGame] = useState('');
-  const [hoveredGame, setHoveredGame] = useState(null);
-
-  const handleEmailChange = (index, value) => {
-    const newEmails = [...emails];
-    newEmails[index] = value;
-    setEmails(newEmails);
-  };
-
-  const addEmailField = () => {
-    setEmails([...emails, '']);
-  };
-
-  const removeEmailField = (index) => {
-    if (emails.length > 1) {
-      const newEmails = emails.filter((_, i) => i !== index);
-      setEmails(newEmails);
-    }
-  };
-
-  const handleGameSelect = (game) => {
-    setSelectedGame(game);
-  };
-
-  const games = [
-    { name: 'Environment & Sustainability', emoji: '🌱', description: 'Focuses on environmental conservation and sustainable practices.' },
-    { name: 'Homelessness', emoji: '🏠', description: 'Addresses issues related to homelessness and provides support for affected individuals.' },
-    { name: 'Special Needs', emoji: '🧠', description: 'Covers support and resources for individuals with special needs.' },
-  ];
-
   return (
-    <div className={styles.container}>
-      <StoreNavbar username={"User"}/>
-      
-      <h2 className={`${styles.title}`}>Program Description</h2>
-      <h2 className={styles.text}> Let us know some details about your program and we'll get everything set up!</h2>
-      <div className={`${styles.segment} ${styles.descriptionSegment}`}>
-        <label className={styles.segmentHeader}>Header Image</label>
-        <h2 className={styles.text}> Attach an image to summarize your program.</h2>
-        <div>
-          <input type="file" accept="image/*" />
-        </div>
-      </div>
-
-      <div className={`${styles.segment} ${styles.descriptionSegment}`}>
-        <label className={styles.segmentHeader}>Program Description</label>
-        <h2 className={styles.text}>This message will be sent out to all participants as a notification of the upcoming program.</h2>
-        <textarea className={styles.textField} rows="4" cols="50"></textarea>
-      </div>
-
-      <div className={styles.segment}>
-        <label className={styles.segmentHeader}>Game Select</label>
-        <h2 className={styles.text}> Select the theme you intend to explore for your program.</h2>
-        <div className={styles.gameSelection}>
-          {games.map((game) => (
-            <div
-              key={game.name}
-              className={`${styles.gameBox} ${selectedGame === game.name ? styles.selected : ''}`}
-              onClick={() => handleGameSelect(game.name)}
-            >
-              <span className={selectedGame === game.name ? styles.emojiSelected : styles.emoji}>
-                {game.emoji}
-              </span>
-              <p className={selectedGame === game.name ? styles.textSelected : styles.text}>
-                {game.name}
-              </p>
+    <div className="flex">
+      {/* <StoreNavbar username={"User"}/> */}
+      <Sidebar />
+        
+      <main className="w-2/3 lg:w-4/5 bg-gradient-to-r from-light-violet to-extra-light-violet pt-4">
+        {/* Store */}
+        <section className="px-8 py-4 flex justify-between">
+          <h2 className='text-3xl text-dark-green font-bold'>Store</h2>
+          <div className="flex max-w-80 space-x-2">
+            <div className="flex items-center">
+              <p className="font-bold text-sm text-dark-green text-right leading-tight">Harrison Chong</p>
             </div>
-          ))}
-        </div>
-      </div>
-
-      <div className={styles.segment}>
-        <label className={styles.segmentHeader}>Emails</label>
-        <h2 className={styles.text}> Add participants' emails here for them to be notified of and receive access for this program.</h2>
-
-        {emails.map((email, index) => (
-          <div key={index} className={styles.emailField}>
-            <input
-              className={styles.textField}
-              type="email"
-              value={email}
-              onChange={(e) => handleEmailChange(index, e.target.value)}
-            />
-            {emails.length > 1 && (
-              <button className={styles.removeButton} type="button" onClick={() => removeEmailField(index)}>
-                Remove
-              </button>
-            )}
+            <div className="rounded-full w-10 overflow-hidden flex items-center">
+              <Image alt="User Icon" className='' src={"/images/Hero_Logo.png"} width={80} height={80}></Image>
+            </div>
+            <Image alt="Shopping Cart" className='' src={"/images/Hero_Logo.png"} width={100} height={80}></Image>
           </div>
-        ))}
-        <button className={styles.addEmail} type="button" onClick={addEmailField}>
-          Add Email
-        </button>
-      </div>
+        </section>
 
-      <div className={styles.segment}>
-        <label className={styles.segmentHeader}>Duration of Play</label>
-        <h2 className={styles.text}> Let participants know when the program will be run! We will use this information to manage how long the game session will be available to participants.</h2>
+        {/* Featured Offerings */}
+        <section className="px-8 py-4">
+          <h2 className='text-3xl text-white'>Featured Offerings</h2>
+          <Carousel className="w-full bg-gray-200 relative mt-6 mb-4">
+            <CarouselContent className="space-x-3">
+              {store_offerings.map((game, gindex) => {
+                return (
+                  <CarouselItem className="sm:basis-1/2 md:basis-1/3 font-bold text-white text-center my-3 py-20 bg-gray-400" key={gindex}>{game}</CarouselItem>
+                )
+              })}
+            </CarouselContent>
+            <CarouselPrevious className="bg-dark-green text-slate-100 hover:bg-darker-green hover:text-slate-100 left-3" />
+            <CarouselNext className="bg-dark-green text-slate-100 hover:bg-darker-green hover:text-slate-100 right-3" />
+          </Carousel>
+        </section>
 
-        <div>
-          <input className={styles.textField} type="date" />
-          <input className={styles.textField} type="time" />
-          <span> to </span>
-          <input className={styles.textField} type="time" />
-        </div>
-      </div>
-
-      <div className={styles.buttonContainer}>
-        <button className={styles.button}>Save as Draft</button>
-        <button className={styles.button}>Publish</button>
-      </div>
+        {/* Our Offerings */}
+        <section className="px-8 py-4">
+          <h2 className='text-3xl text-white'>Our Offerings</h2>
+          <div className='w-full flex items-start flex-wrap -mt-4'>
+            {games_info[0].data.map((game, gindex) => {
+              return (
+                <div key={gindex} className="w-1/3 mb-4 pr-4 mt-10 flex flex-col space-y-8">
+                  <GameItem
+                    index={gindex}
+                    image={game.image}
+                    title={game.title}
+                    description={game.description}
+                    values={game.values}
+                    button={game.button}>
+                  </GameItem>
+                  <div className='flex justify-center'>
+                    <Button className='w-40 text-lg font-light text-center border-white border-2 rounded-lg bg-transparent text-white hover:border-white hover:text-white hover:bg-transparent'><p>Add to Cart</p></Button>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
