@@ -4,10 +4,8 @@ import { Tabs, TabsList, TabsContent, TabsTrigger } from '@/components/ui/tabs';
 import { Carousel, CarouselContent } from "@/components/ui/carousel";
 import { CataloguePrevious, CatalogueNext, CatalogueTrigger, CatalogueItem } from "./components/homepage/Catalogue.jsx";
 import { ResponsiveImage } from "./components/ResponsiveImage";
-
-import HeroSection from "./components/homepage/HeroSection";
-
 import { games_info } from "../public/data/games_info.json";
+import HeroSection from "./components/homepage/HeroSection";
 
 export default function Home() {
   return (
@@ -17,9 +15,9 @@ export default function Home() {
 
       {/* Content that caters to everyone */}
       <section className='bg-gradient-to-b from-black to-[#306054] px-8 pt-24 relative z-30'>
-        <Image alt="Jalan Journey logo" className='-mt-36 mx-auto mb-12' src={"/images/Hero_Logo.png"} width={140} height={140}></Image>
-        <Image alt="Left tree" className='w-2/6 absolute -top-16 md:-top-1/4 left-0' src={"/images/Hero_LeftTree.png"} width={500} height={500}></Image>
-        <Image alt="Right tree" className='w-2/6 absolute -top-16 md:-top-1/4 right-0' src={"/images/Hero_RightTree.png"} width={500} height={500}></Image>
+        <Image alt="Jalan Journey logo" className='-mt-36 mx-auto mb-12' src={"/images/Homepage/Hero_Logo.png"} width={140} height={140}></Image>
+        <Image alt="Left tree" className='w-2/6 absolute -top-16 md:-top-1/4 left-0' src={"/images/Homepage/Hero_LeftTree.png"} width={500} height={500}></Image>
+        <Image alt="Right tree" className='w-2/6 absolute -top-16 md:-top-1/4 right-0' src={"/images/Homepage/Hero_RightTree.png"} width={500} height={500}></Image>
         <h2 className='text-3xl text-center text-white font-bold'>Content that caters to everyone</h2>
         <div className='md:flex md:space-x-4 space-y-4 md:space-y-0 mt-4 max-w-3xl mx-auto'>
           <div className="md:w-1/2 lg:w-1/3 bg-beige border-dark-green border-[6px] rounded-lg flex flex-col items-center p-4">
@@ -52,10 +50,10 @@ export default function Home() {
       {/* Explore Our Catalogue */}
       <section className='bg-gradient-to-b from-[#306054] via-[#a2c17c] to-black relative pb-12'>
         <div className="bg-cover bg-top h-48 absolute top-0 left-0 right-0"
-            style={{ backgroundImage: `url(/images/Catalogue_Top.png)` }}>
+            style={{ backgroundImage: `url(/images/Homepage/Catalogue_Top.png)` }}>
         </div>
-        <Image alt="Left tree" className='absolute bottom-0 left-0' src={"/images/Catalogue_LeftTree.png"} width={140} height={300}></Image>
-        <Image alt="Right tree" className='absolute bottom-0 right-0' src={"/images/Catalogue_RightTree.png"} width={140} height={300}></Image>
+        <Image alt="Left tree" className='absolute bottom-0 left-0' src={"/images/Homepage/Catalogue_LeftTree.png"} width={140} height={300}></Image>
+        <Image alt="Right tree" className='absolute bottom-0 right-0' src={"/images/Homepage/Catalogue_RightTree.png"} width={140} height={300}></Image>
         <div className='w-full px-8 pt-36 relative z-20'>
           <h2 className='text-2xl text-center text-white font-bold'>Explore Our Catalogue</h2>
           <Tabs defaultValue={games_info[0].slug} className="w-full flex items-center flex-col p-4">
@@ -95,19 +93,19 @@ export default function Home() {
           </Tabs>
         </div>
         <div className="bg-repeat-x bg-bottom bg-contain h-16 absolute bottom-0 left-0 right-0 z-10"
-            style={{ backgroundImage: `url(/images/Engage_Grass.png)` }}>
-          <Image alt="" className='mx-auto -mt-16' src={"/images/Engage_Logo.png"} width={150} height={150}></Image>
+            style={{ backgroundImage: `url(/images/Homepage/Engage_Grass.png)` }}>
+          <Image alt="" className='mx-auto -mt-16' src={"/images/Homepage/Engage_Logo.png"} width={150} height={150}></Image>
         </div>
       </section>
 
       {/* Engage Participants */}
       <section className='w-full bg-brown pt-0 pb-48 relative'>
         <div className='absolute -top-10 w-full left-1/2 -translate-x-2/4 lg:w-3/4 max-w-6xl'>
-          <Image alt="" className='w-full' src={"/images/Engage_Top.png"} width={500} height={500}></Image>
-          <Image alt="" className='w-full' src={"/images/Engage_Middle.png"} width={500} height={500}></Image>
+          <Image alt="" className='w-full' src={"/images/Homepage/Engage_Top.png"} width={500} height={500}></Image>
+          <Image alt="" className='w-full' src={"/images/Homepage/Engage_Middle.png"} width={500} height={500}></Image>
         </div>
-        <Image alt="" className='absolute bottom-0 left-0 right-0 w-full' src={"/images/Engage_Bottom.png"} width={1500} height={1500}></Image>
-        <Image alt="" className='absolute bottom-0 right-1/4' src={"/images/Engage_Flower.png"} width={140} height={300}></Image>
+        <Image alt="" className='absolute bottom-0 left-0 right-0 w-full' src={"/images/Homepage/Engage_Bottom.png"} width={1500} height={1500}></Image>
+        <Image alt="" className='absolute bottom-0 right-1/4' src={"/images/Homepage/Engage_Flower.png"} width={140} height={300}></Image>
 
         <Tabs defaultValue="engage-participants" className="w-full flex items-center flex-col p-4 z-10 relative">
           <TabsList className="h-auto w-full lg:w-3/4 xl:w-[900px] flex flex-wrap items-center bg-transparent flex-col xs:flex-row">
@@ -119,7 +117,7 @@ export default function Home() {
           </TabsList>
           <TabsContent value="engage-participants" className="w-full md:w-3/4 xl:w-[900px] mt-8">
             <div className='w-full bg-beige rounded-xl p-3 flex flex-col-reverse sm:flex-row sm:space-x-6 md:flex-col-reverse md:space-x-0 lg:flex-row lg:space-x-6'>
-              <div className='w-full sm:w-1/4 md:w-full lg:w-1/4 bg-cover bg-center rounded-xl h-52 sm:h-auto md:h-52 lg:h-auto' style={{ backgroundImage: `url(/images/Engage_Image.png)` }}>
+              <div className='w-full sm:w-1/4 md:w-full lg:w-1/4 bg-cover bg-center rounded-xl h-52 sm:h-auto md:h-52 lg:h-auto' style={{ backgroundImage: `url(/images/Homepage/Engage_Image.png)` }}>
               </div>
               <div className='w-full sm:w-3/4 md:w-full lg:w-3/4 pt-3 pb-2 pl-2 pr-4 sm:pl-0 sm:pr-8 sm:pt-2 md:pl-4 md:pr-6 md:pt-4 lg:pl-0 lg:pr-8 lg:pt-2'>
                 <h5 className='text-xl md:text-2xl text-dark-green font-bold pb-1'>Spark interest with game-based learning that turns education into excitement</h5>
@@ -129,7 +127,7 @@ export default function Home() {
           </TabsContent>
           <TabsContent value="improve-learning-outcomes" className="w-full md:w-3/4 xl:w-[900px] mt-8">
           <div className='w-full bg-beige rounded-xl p-3 flex flex-col-reverse sm:flex-row sm:space-x-6 md:flex-col-reverse md:space-x-0 lg:flex-row lg:space-x-6'>
-              <div className='w-full sm:w-1/4 md:w-full lg:w-1/4 bg-cover bg-center rounded-xl h-52 sm:h-auto md:h-52 lg:h-auto' style={{ backgroundImage: `url(/images/Engage_Image.png)` }}>
+              <div className='w-full sm:w-1/4 md:w-full lg:w-1/4 bg-cover bg-center rounded-xl h-52 sm:h-auto md:h-52 lg:h-auto' style={{ backgroundImage: `url(/images/Homepage/Engage_Image.png)` }}>
               </div>
               <div className='w-full sm:w-3/4 md:w-full lg:w-3/4 pt-3 pb-2 pl-2 pr-4 sm:pl-0 sm:pr-8 sm:pt-2 md:pl-4 md:pr-6 md:pt-4 lg:pl-0 lg:pr-8 lg:pt-2'>
                 <h5 className='text-xl md:text-2xl text-dark-green font-bold pb-1'>Elevate academic achievement with games designed to enhance comprehension and retention</h5>
@@ -139,7 +137,7 @@ export default function Home() {
           </TabsContent>
           <TabsContent value="realworld-applicability" className="w-full md:w-3/4 xl:w-[900px] mt-8">
           <div className='w-full bg-beige rounded-xl p-3 flex flex-col-reverse sm:flex-row sm:space-x-6 md:flex-col-reverse md:space-x-0 lg:flex-row lg:space-x-6'>
-              <div className='w-full sm:w-1/4 md:w-full lg:w-1/4 bg-cover bg-center rounded-xl h-52 sm:h-auto md:h-52 lg:h-auto' style={{ backgroundImage: `url(/images/Engage_Image.png)` }}>
+              <div className='w-full sm:w-1/4 md:w-full lg:w-1/4 bg-cover bg-center rounded-xl h-52 sm:h-auto md:h-52 lg:h-auto' style={{ backgroundImage: `url(/images/Homepage/Engage_Image.png)` }}>
               </div>
               <div className='w-full sm:w-3/4 md:w-full lg:w-3/4 pt-3 pb-2 pl-2 pr-4 sm:pl-0 sm:pr-8 sm:pt-2 md:pl-4 md:pr-6 md:pt-4 lg:pl-0 lg:pr-8 lg:pt-2'>
                 <h5 className='text-xl md:text-2xl text-dark-green font-bold pb-1'>Experience practical education through scenarios that prepare learners for real-life experiences</h5>
@@ -149,7 +147,7 @@ export default function Home() {
           </TabsContent>
           <TabsContent value="lighten-workloads" className="w-full md:w-3/4 xl:w-[900px] mt-8">
           <div className='w-full bg-beige rounded-xl p-3 flex flex-col-reverse sm:flex-row sm:space-x-6 md:flex-col-reverse md:space-x-0 lg:flex-row lg:space-x-6'>
-              <div className='w-full sm:w-1/4 md:w-full lg:w-1/4 bg-cover bg-center rounded-xl h-52 sm:h-auto md:h-52 lg:h-auto' style={{ backgroundImage: `url(/images/Engage_Image.png)` }}>
+              <div className='w-full sm:w-1/4 md:w-full lg:w-1/4 bg-cover bg-center rounded-xl h-52 sm:h-auto md:h-52 lg:h-auto' style={{ backgroundImage: `url(/images/Homepage/Engage_Image.png)` }}>
               </div>
               <div className='w-full sm:w-3/4 md:w-full lg:w-3/4 pt-3 pb-2 pl-2 pr-4 sm:pl-0 sm:pr-8 sm:pt-2 md:pl-4 md:pr-6 md:pt-4 lg:pl-0 lg:pr-8 lg:pt-2'>
                 <h5 className='text-xl md:text-2xl text-dark-green font-bold pb-1'>Simplify educational logistics with plug-and-play solutions that streamline planning and execution</h5>
@@ -159,7 +157,7 @@ export default function Home() {
           </TabsContent>
           <TabsContent value="acquire-options" className="w-full md:w-3/4 xl:w-[900px] mt-8">
           <div className='w-full bg-beige rounded-xl p-3 flex flex-col-reverse sm:flex-row sm:space-x-6 md:flex-col-reverse md:space-x-0 lg:flex-row lg:space-x-6'>
-              <div className='w-full sm:w-1/4 md:w-full lg:w-1/4 bg-cover bg-center rounded-xl h-52 sm:h-auto md:h-52 lg:h-auto' style={{ backgroundImage: `url(/images/Engage_Image.png)` }}>
+              <div className='w-full sm:w-1/4 md:w-full lg:w-1/4 bg-cover bg-center rounded-xl h-52 sm:h-auto md:h-52 lg:h-auto' style={{ backgroundImage: `url(/images/Homepage/Engage_Image.png)` }}>
               </div>
               <div className='w-full sm:w-3/4 md:w-full lg:w-3/4 pt-3 pb-2 pl-2 pr-4 sm:pl-0 sm:pr-8 sm:pt-2 md:pl-4 md:pr-6 md:pt-4 lg:pl-0 lg:pr-8 lg:pt-2'>
                 <h5 className='text-xl md:text-2xl text-dark-green font-bold pb-1'>Explore diverse perspectives in safe, controlled virtual environments for unique learning opportunities</h5>
@@ -194,8 +192,8 @@ export default function Home() {
             <p className='leading-snug'>
               We have conducted extensive research into our games that have proven to have a 2.14x increase in learning outcomes.
             </p>
-            <Image alt="" className='absolute -bottom-2 -left-10 hidden md:block' src={"/images/Engage_LastLeft.png"} width={100} height={100}></Image>
-            <Image alt="" className='absolute top-full -right-2 -mt-6' src={"/images/Engage_LastRight.png"} width={100} height={100}></Image>
+            <Image alt="" className='absolute -bottom-2 -left-10 hidden md:block' src={"/images/Homepage/Engage_LastLeft.png"} width={100} height={100}></Image>
+            <Image alt="" className='absolute top-full -right-2 -mt-6' src={"/images/Homepage/Engage_LastRight.png"} width={100} height={100}></Image>
           </div>
         </section>
       </section>
@@ -203,7 +201,7 @@ export default function Home() {
       {/* Join us in inspiring the Change Makers of tomorrow */}
       <section className='w-full bg-stone pt-28 pb-40 relative'>
         <div className="bg-repeat bg-center bg-contain h-16 absolute top-0 left-0 right-0"
-            style={{ backgroundImage: `url(/images/JoinUs_Top.png)` }}>
+            style={{ backgroundImage: `url(/images/Homepage/JoinUs_Top.png)` }}>
         </div>
         <div className='max-w-3xl sm:flex m-auto relative z-20'>
           <div className='w-3/4 mx-auto sm:max-w-80 text-center sm:text-right mt-3'>
@@ -229,7 +227,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <Image alt="" className='absolute bottom-0 hidden sm:block right-3/4 2xl:right-auto 2xl:left-1/4' src={"/images/JoinUs_Flower.png"} width={200} height={200}></Image>
+        <Image alt="" className='absolute bottom-0 hidden sm:block right-3/4 2xl:right-auto 2xl:left-1/4' src={"/images/Homepage/JoinUs_Flower.png"} width={200} height={200}></Image>
       </section>
       {/* <section className='sm:flex justify-center items-center sm:space-x-2 md:space-x-8 lg:space-x-20 bg-slate-300 w-full px-4 py-10 my-8'>
         <div className='mx-auto my-2 sm:my-0 sm:mx-0 rounded-full h-48 w-48 sm:h-40 sm:w-40 md:h-48 md:w-48 bg-gray-400 flex items-center justify-center flex-col'>
