@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -12,7 +12,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Checkbox } from "@/components/ui/checkbox";
 
 export function TrialForm() {
   const form = useForm();

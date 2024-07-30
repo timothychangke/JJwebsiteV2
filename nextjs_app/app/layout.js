@@ -11,7 +11,6 @@ const inter = Inter({ subsets: ['latin'] });
 export default function RootLayout({ children }) {
   const router = useRouter();
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <html lang="en">
       <body className={inter.className}>

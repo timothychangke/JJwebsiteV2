@@ -1,19 +1,18 @@
 'use client';
-import { useState } from 'react';
 import Image from 'next/image';
-import Sidebar from '../components/store/Sidebar';
-import { games_info } from "../../public/data/games_info.json";
-import { store_offerings } from "../../public/data/store_offerings.json";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import { GameItem } from "../components/homepage/Catalogue.jsx";
 import { Button } from '@/components/ui/button';
+import { games_info } from "@/public/data/games_info";
+import { store_offerings } from "@/public/data/store_offerings";
+import Sidebar from '../components/store/Sidebar';
+import GameCard from "../components/homepage/GameCard";
 
 export default function Store() {
   return (
     <div className="flex">
       {/* <StoreNavbar username={"User"}/> */}
       <Sidebar />
-        
+      
       <main className="w-2/3 lg:w-4/5 bg-gradient-to-r from-light-violet to-extra-light-violet pt-4">
         {/* Store */}
         <section className="px-8 py-4 flex justify-between">
@@ -51,15 +50,15 @@ export default function Store() {
           <div className='w-full flex items-start flex-wrap -mt-4'>
             {games_info[0].data.map((game, gindex) => {
               return (
-                <div key={gindex} className="w-1/3 mb-4 pr-4 mt-10 flex flex-col space-y-8">
-                  <GameItem
+                <div key={gindex} className="w-full sm:w-1/2 lg:w-1/3 max-w-xs mb-4 pr-4 mt-10 flex flex-col space-y-8">
+                  <GameCard
                     index={gindex}
                     image={game.image}
                     title={game.title}
                     description={game.description}
                     values={game.values}
                     button={game.button}>
-                  </GameItem>
+                  </GameCard>
                   <div className='flex justify-center'>
                     <Button className='w-40 text-lg font-light text-center border-white border-2 rounded-lg bg-transparent text-white hover:border-white hover:text-white hover:bg-transparent'><p>Add to Cart</p></Button>
                   </div>

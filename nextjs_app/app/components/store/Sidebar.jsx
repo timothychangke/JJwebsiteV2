@@ -62,7 +62,7 @@ export default function Sidebar() {
     <section className="w-1/3 lg:w-1/5 border-r border-black bg-extra-light-violet flex flex-col justify-between">
       <div>
         <div className="flex space-x-2 items-center p-4">
-          <Image src="/JJLogo.png" alt="Company Logo" className="" width={50} height={50} />
+          <Image src="/images/Homepage/Hero_Logo.png" alt="Company Logo" className="" width={50} height={50} />
           <p className="text-violet font-bold text-lg">Jalan Journey</p>
         </div>
         <div className="mt-6">
