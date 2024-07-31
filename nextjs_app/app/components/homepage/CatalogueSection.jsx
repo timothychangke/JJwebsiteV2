@@ -41,8 +41,8 @@ const CatalogueSection = () => {
                                         )
                                     })}
                                 </CarouselContent>
-                                <CarouselPrevious className="bg-dark-green text-slate-100 hover:bg-darker-green hover:text-slate-100" />
-                                <CarouselNext className="bg-dark-green text-slate-100 hover:bg-darker-green hover:text-slate-100" />
+                                <CarouselPrevious className="bg-dark-green text-slate-100 hover:bg-extra-dark-green hover:text-slate-100" />
+                                <CarouselNext className="bg-dark-green text-slate-100 hover:bg-extra-dark-green hover:text-slate-100" />
                             </Carousel>
                             <div className='flex justify-center my-3'>
                                 <Button className='text-lg font-light text-center border-white border-2 rounded-lg bg-transparent text-white hover:border-white hover:text-white hover:bg-transparent'><p>See all for <span className='font-bold'>{cat.category}</span></p></Button>

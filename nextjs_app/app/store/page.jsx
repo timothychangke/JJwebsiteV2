@@ -1,56 +1,78 @@
 'use client';
 import Image from 'next/image';
+import { useState } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import { Button } from '@/components/ui/button';
 import { games_info } from "@/public/data/games_info";
 import { store_offerings } from "@/public/data/store_offerings";
 import Sidebar from '../components/store/Sidebar';
+import Cart from "../components/store/Cart";
 import GameCard from "../components/homepage/GameCard";
 
 export default function Store() {
+  const user = {
+    name: "Harrison Chong",
+    dpSrc: "User.png"
+  };
+  const [cart, setCart] = useState([]);
+
+  function addToCart(game) {
+    const obj = {
+      "name": game.title,
+      "imgSrc": game.image,
+      "connections": game.connections,
+      "price": game.price,
+    };
+    let isInCart = false;
+    cart.forEach((itemInCart) => {
+      if (itemInCart.name === obj.name) isInCart = true;
+    })
+    if(!isInCart) setCart(cart => [...cart, obj]);
+  }
+
   return (
-    <div className="flex">
+    <div className="flex bg-gradient-to-r from-light-violet to-extra-light-violet">
       {/* <StoreNavbar username={"User"}/> */}
       <Sidebar />
       
-      <main className="w-2/3 lg:w-4/5 bg-gradient-to-r from-light-violet to-extra-light-violet pt-4">
+      <main className="w-full lg:w-4/5 pt-4">
         {/* Store */}
-        <section className="px-8 py-4 flex justify-between">
-          <h2 className='text-3xl text-dark-green font-bold'>Store</h2>
-          <div className="flex max-w-80 space-x-2">
+        <section className="max-w-4xl mx-auto px-8 py-4 flex justify-between">
+          <h2 className='pl-8 lg:pl-0 text-3xl text-dark-green font-bold'>Store</h2>
+          <div className="flex max-w-80 space-x-5 items-center">
             <div className="flex items-center">
-              <p className="font-bold text-sm text-dark-green text-right leading-tight">Harrison Chong</p>
+              <p className="font-bold text-sm text-dark-green text-right leading-tight">{user.name}</p>
             </div>
             <div className="rounded-full w-10 overflow-hidden flex items-center">
-              <Image alt="User Icon" className='' src={"/images/Hero_Logo.png"} width={80} height={80}></Image>
+              <Image alt="User Icon" className='' src={`/images/Store/${user.dpSrc}`} width={80} height={80}></Image>
             </div>
-            <Image alt="Shopping Cart" className='' src={"/images/Hero_Logo.png"} width={100} height={80}></Image>
+            <Cart cart={cart} />
           </div>
         </section>
 
         {/* Featured Offerings */}
-        <section className="px-8 py-4">
+        <section className="max-w-4xl mx-auto px-8 py-4">
           <h2 className='text-3xl text-white'>Featured Offerings</h2>
           <Carousel className="w-full bg-gray-200 relative mt-6 mb-4">
             <CarouselContent className="space-x-3">
               {store_offerings.map((game, gindex) => {
                 return (
-                  <CarouselItem className="sm:basis-1/2 md:basis-1/3 font-bold text-white text-center my-3 py-20 bg-gray-400" key={gindex}>{game}</CarouselItem>
+                  <CarouselItem className="basis-full sm:basis-1/2 md:basis-1/3 font-bold text-white text-center my-3 py-20 bg-gray-400" key={gindex}>{game}</CarouselItem>
                 )
               })}
             </CarouselContent>
-            <CarouselPrevious className="bg-dark-green text-slate-100 hover:bg-darker-green hover:text-slate-100 left-3" />
-            <CarouselNext className="bg-dark-green text-slate-100 hover:bg-darker-green hover:text-slate-100 right-3" />
+            <CarouselPrevious className="bg-dark-green text-slate-100 hover:bg-extra-dark-green hover:text-slate-100 left-3" />
+            <CarouselNext className="bg-dark-green text-slate-100 hover:bg-extra-dark-green hover:text-slate-100 right-3" />
           </Carousel>
         </section>
 
         {/* Our Offerings */}
-        <section className="px-8 py-4">
+        <section className="max-w-4xl mx-auto px-8 py-4">
           <h2 className='text-3xl text-white'>Our Offerings</h2>
           <div className='w-full flex items-start flex-wrap -mt-4'>
             {games_info[0].data.map((game, gindex) => {
               return (
-                <div key={gindex} className="w-full sm:w-1/2 lg:w-1/3 max-w-xs mb-4 pr-4 mt-10 flex flex-col space-y-8">
+                <div key={gindex} className="w-full sm:w-1/2 lg:w-1/3 lg:max-w-xs mb-4 pr-4 mt-10 flex flex-col space-y-8">
                   <GameCard
                     index={gindex}
                     image={game.image}
@@ -60,7 +82,7 @@ export default function Store() {
                     button={game.button}>
                   </GameCard>
                   <div className='flex justify-center'>
-                    <Button className='w-40 text-lg font-light text-center border-white border-2 rounded-lg bg-transparent text-white hover:border-white hover:text-white hover:bg-transparent'><p>Add to Cart</p></Button>
+                    <Button onClick={() => addToCart(game)} className='w-40 text-lg font-light text-center border-white border-2 rounded-lg bg-transparent text-white hover:border-white hover:text-white hover:bg-violet/20'><p>Add to Cart</p></Button>
                   </div>
                 </div>
               )
