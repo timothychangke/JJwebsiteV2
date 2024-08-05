@@ -1,16 +1,30 @@
+'use client'
+import { useState } from 'react'
 import Head from 'next/head'
-import Navbar from '../components/general/Navbar'
-import CTA from '../components/general/CTA'
 import GameGrid from './GameGrid'
+import Implementation from './Implementation'
+import GettingStarted from './GettingStarted'
 import styles from '../styles/GamesCatalogue.module.css'
 
+const Home = () => {
+  const [activeSegment, setActiveSegment] = useState('games')
 
+  const renderSegment = () => {
+    switch (activeSegment) {
+      case 'games':
+        return <GameGrid />
+      case 'implementation':
+        return <Implementation />
+      case 'gettingStarted':
+        return <GettingStarted />
+      default:
+        return <GameGrid />
+    }
+  }
 
-export default function Home() {
   return (
     <div className={styles.container}>
 
-      
       <Head>
         <title>Institutions - Level Up Classroom Learning With Play</title>
         <meta name="description" content="Level Up Classroom Learning With Play" />
@@ -25,15 +39,32 @@ export default function Home() {
         </div>
 
         <div className={styles.tabs}>
-          <button className={styles.active}>Games</button>
-          <button>Implementation</button>
-          <button>Getting Started</button>
+        <button
+            className={activeSegment === 'games' ? styles.active : ''}
+            onClick={() => setActiveSegment('games')}
+          >
+            Games
+          </button>
+          <button
+            className={activeSegment === 'implementation' ? styles.active : ''}
+            onClick={() => setActiveSegment('implementation')}
+          >
+            Implementation
+          </button>
+          <button
+            className={activeSegment === 'gettingStarted' ? styles.active : ''}
+            onClick={() => setActiveSegment('gettingStarted')}
+          >
+            Getting Started
+          </button>
         </div>
 
         <div className={styles.games}>
-          <GameGrid/>
+        {renderSegment()}
         </div>
       </main>
     </div>
   )
 }
+
+export default Home;

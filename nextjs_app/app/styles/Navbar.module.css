@@ -16,21 +16,22 @@
   background-position: center, center;
   margin-bottom: -2.9rem;
   padding: 0 1rem;
-  flex-wrap: wrap; /* Ensure items wrap within the flex container */
+  flex-wrap: wrap; 
 }
 
 .logo img {
-  width: 90px;
-  margin: -5px -5px;
+  width: 90%;
+  margin: -15px;
 }
 
 .menuContainer {
   position: relative;
-  order: 1; /* Ensure the menuContainer is first in order */
+  order: 1; 
 }
 
 .menu {
   cursor: pointer;
+  margin-left: -2rem;
   margin-right: 1rem;
 }
 
@@ -47,7 +48,8 @@
 
 .dropdown a {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
   text-decoration: none;
   color: white;
 }
@@ -69,8 +71,13 @@
   color: white;
 }
 
+.links a:hover {
+  text-decoration: underline;
+}
+
 .auth {
   display: flex;
+  align-items: center;
   order: 3; /* Ensure the auth buttons are last */
 }
 
@@ -86,6 +93,13 @@
   border-radius: 10px;
 }
 
+.separator {
+  width: 1px;
+  height: 2.1rem;
+  background-color: rgba(255, 255, 255, 0.418);
+  margin: 0 1rem;
+}
+
 .auth .signup {
   border-radius: 1;
   background-color: #4b0082;
@@ -98,7 +112,7 @@
 
 .vineContainer {
   position: absolute;
-  bottom: -15px;
+  bottom: -20px;
   margin-top: 21rem; 
   width: 100%; 
   display: flex;
@@ -113,7 +127,8 @@
 
 /* Media Queries for Responsiveness */
 
-@media (max-width: 1200px) {
+@media (max-width: 1600px) {
+
   .links a {
     margin: 0.8rem;
     font-size: 0.9rem;
@@ -125,11 +140,51 @@
     margin-right: 0.3rem;
     font-size: 0.9rem;
   }
+
+  
+  .vineContainer {
+    bottom: -13px;
+  }
+
+  .separator {
+    width: 1px;
+    height: 1.8rem;
+    margin: 0 0.7rem;
+  }
+}
+
+@media (max-width: 1200px) {
+
+  .links a {
+    margin: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .auth button {
+    padding: 0.2rem 0.8rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    font-size: 0.9rem;
+  }
+
+  .vineContainer {
+    bottom: -10px;
+  }
+
+  .separator {
+    width: 1px;
+    height: 1.8rem;
+    margin: 0 0.5rem;
+  }
 }
 
 @media (max-width: 800px) {
   .navbar {
-    padding: 0.5rem 1rem;
+    padding: 1rem;
+  }
+
+  .logo img {
+    width: 0px;
   }
 
   .links a {
@@ -142,16 +197,39 @@
     margin: 0.3rem;
     font-size: 0.8rem;
   }
+
+  .vineContainer {
+    bottom: -6px;
+  }
+
+  .menu {
+    font-size: 0.8rem;
+    padding-left: 1.2rem;
+    margin-right: -0.1rem;
+  }
+
+  .separator {
+    width: 1px;
+    height: 1.8rem;
+    margin: 0 0.5rem;
+  }
 }
 
 @media (max-width: 500px) {
+
+  .menu {
+    font-size: 0.7rem;
+    padding-left: 1rem;
+    margin-right: -0.5rem;
+  }
+
   .navbar {
-    padding: 0.5rem;
+    padding: 0.5rem 0.1rem;
   }
 
   .logo img {
-    width: 70px;
-    margin: -3px -3px;
+    width: 0px;
+    margin-right: 1rem;
   }
 
   .links a {
@@ -164,4 +242,13 @@
     font-size: 0.7rem;
   }
 
+  .vineContainer {
+    bottom: -5px;
+  }
+
+  .separator {
+    width: 1px;
+    height: 1.2rem;
+    margin: 0 0.5rem;
+  }
 }

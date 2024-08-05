@@ -6,7 +6,9 @@ const CTA = () => {
       <h3>So, Are You Ready To Walk With Us?</h3>
       <p>Gain Access To All Our Resources By Starting An Account</p>
       <button className={styles.createAccount}>Create an account</button>
-      <button className={styles.login}>Log in</button>
+      <div>
+        <button className={styles.login}>Log in</button>
+      </div>
 
     </section>
   )

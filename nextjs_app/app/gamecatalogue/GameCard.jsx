@@ -5,12 +5,12 @@ const GameCard = ({ title, description, features, buttonText, type, image }) => 
   return (
     <div className={`${styles.card} ${styles[type]}`}>
       <div className={styles.imageContainer}>
-        <Image src={image} alt={title} layout="responsive" width={450} height={300} className={styles.image} />
+        <Image src={image} alt={title} layout="responsive" width={50} height={50} className={styles.image} />
       </div>
       <div className={styles.content}>
         <h3>{title}</h3>
         <p>{description}</p>
-        <br></br>
+
         <ul className={styles.values}>
           {features.map((feature, index) => (
             <li key={index}>{feature}</li>

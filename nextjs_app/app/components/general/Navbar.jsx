@@ -15,7 +15,7 @@ const Navbar = () => {
       <nav className={styles.navbar}>
 
         <div className={styles.logo}>
-          <Image src="/images/JJlogo.svg" alt="Jalan Journey" width={200} height={200} />
+          <Image src="/images/JJlogo.svg" alt="Jalan Journey" width={100} height={100}/>
         </div>
         <div className={styles.menuContainer}>
           <div className={styles.menu} onClick={toggleDropdown}>
@@ -39,6 +39,7 @@ const Navbar = () => {
         </div>
         <div className={styles.auth}>
           <button className={styles.login}>Log In</button>
+          <div className={styles.separator}></div>
           <button className={styles.signup}>Sign Up</button>
         </div>
       </nav>
