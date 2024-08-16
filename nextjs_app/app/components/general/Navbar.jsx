@@ -45,7 +45,7 @@ const Navbar = () => {
       </nav>
             
       <div className={styles.vineContainer}>
-        <Image src='/images/VineFull.svg' alt='Vine' layout='responsive' width={450} height={40} className={styles.vine} />
+        <Image src='/images/Vine2.svg' alt='Vine' layout='responsive' width={450} height={40} className={styles.vine} />
       </div>
 
     </header>

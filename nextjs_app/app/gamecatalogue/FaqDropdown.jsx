@@ -21,56 +21,52 @@ const Dropdown = ({ title, children }) => {
 };
 
 const MainDropdown = ({ title, children }) => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   
-    const toggleDropdown = () => {
-      setIsOpen(!isOpen);
-    };
-  
-    return (
-      <div className={styles.dropdown}>
-        <button onClick={toggleDropdown} className={styles.dropdownMainBtn}>
-          {title}
-          <span>{isOpen ? '▲' : '▼'}</span>
-        </button>
-        {isOpen && <div className={styles.dropdownContent}>{children}</div>}
-      </div>
-    );
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
   };
+  
+  return (
+    <div className={styles.dropdown}>
+      <button onClick={toggleDropdown} className={styles.dropdownMainBtn}>
+        {title}
+        <span>{isOpen ? '▲' : '▼'}</span>
+      </button>
+      {isOpen && <div className={styles.dropdownContent}>{children}</div>}
+    </div>
+  );
+};
 
 const FaqDropdown = () => {
   return (
     <div className={styles.faqContainer}>
-      <MainDropdown title="FAQ">
-        <Dropdown title="How long does it take to set up?">
-          <p>Setup is instantaneous. No downloads are required—players simply use their personal learning devices and join via the provided link.</p>
-        </Dropdown>
-        <Dropdown title="Do I need to download anything to use the game?">
-          <p>We recommend using a laptop or tablet with a stable internet connection for the best experience.</p>
-        </Dropdown>
-        <Dropdown title="What devices can I use?">
-          <Dropdown title="Device Types">
-            <p>No downloads are necessary. It is a web browser plug-and-play game.</p>
-          </Dropdown>
-          <Dropdown title="Internet Requirements">
-            <p>A stable internet connection is recommended for optimal performance.</p>
-          </Dropdown>
-        </Dropdown>
-        <Dropdown title="Do I need to be tech-savvy to use the games?">
-          <p>No, the games and instructions are intuitive and self-explanatory. Most students can navigate them independently. Additional support is available if needed.</p>
-        </Dropdown>
-        <Dropdown title="Do my students need to be tech-savvy?">
-          <p>No, students generally find the games easy to use due to their digital literacy. They can typically navigate the games without assistance.</p>
-        </Dropdown>
-        <Dropdown title="How many players can play at once?">
-          <p>Our games are designed to accommodate 1-5 players on a single device. Each device can be thought of as a single team sharing control of one player. Game modes are specified as either single device (one team playing alone) or multi-device (multiple teams interacting together in the game).</p>
-        </Dropdown>
-        <Dropdown title="How many connections should I get, and for how many students?">
-          <p>We recommend grouping students into groups of 3-5, sharing one learning device. This promotes collaborative learning and peer reflection as they make collective decisions before taking action.</p>
-        </Dropdown>
-        <Dropdown title="Is there a minimum or maximum number of connections?">
-          <p>Except for multi-device games, which require at least two (2) connections, our games can support from one (1) to an unlimited number of connections.</p>
-        </Dropdown>
+      <MainDropdown title="Usage Scenarios">
+        <h3>1. Character Education Modules</h3>
+        <p>Every youth should learn these vital life lessons but making the lessons engaging shouldn't solely fall on the teacher. Use our modules to teach Character Education content in a fun and interactive way.</p>
+        <video width="100%" controls>
+          <source src="path_to_your_video_1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        
+        <h3>2. Topical Teaching Aids</h3>
+        <p>Enhance your lessons with teaching aids that illustrate key concepts clearly or give teachers a much-needed break. For instance, use tools to help students grasp social inequality in social studies or play our recycling game to teach chemistry concepts.</p>
+        <video width="100%" controls>
+          <source src="path_to_your_video_2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        
+        <h3>3. Volunteer/Community Project Identification Tool</h3>
+        <p>Worried that students may not be fully committed to a project? Let them explore and understand the cause beforehand. Our games can provide the necessary theory and context in a safe virtual environment, preparing students in a mature and informed manner. It could even assist in their ideation!</p>
+        
+        <h3>4. Learning Journey Supplement/Replacement</h3>
+        <p>Sometimes it's a hassle to visit a location in person. Use our time-effective and cost-effective service to bring the event experience directly to your classroom. Save time and money, all while in the comfort of your classroom.</p>
+        
+        <h3>5. Post-Exam Enrichment Activity</h3>
+        <p>Waiting for the school holidays? Develop your students holistically with activities that are both fun and educational.</p>
+        
+        <h3>6. School Events</h3>
+        <p>Celebrate occasions like Youth Environment Day with recycling games that promote environmental awareness.</p>
       </MainDropdown>
     </div>
   );
