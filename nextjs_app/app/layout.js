@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         {/* <Navbar /> */}
         <Toaster position="bottom-right" />
         {children}
-        {pathname != "/login" && pathname != "/signup" && pathname != "/forget-password" && pathname != "/store" && (
+        {pathname != "/login" && pathname != "/signup" && pathname != "/forget-password" && pathname != "/store" && pathname != "/mypurchases" && (
           <footer className='text-md text-center py-12 bg-light-green'>
             <div className='sm:flex w-full max-w-4xl mx-auto justify-between'>
               <div className='w-96 sm:w-auto mx-auto sm:mx-0'>

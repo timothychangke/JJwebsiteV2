@@ -8,12 +8,21 @@ import { store_offerings } from "@/public/data/store_offerings";
 import Sidebar from '../components/store/Sidebar';
 import Cart from "../components/store/Cart";
 import GameCard from "../components/homepage/GameCard";
+import { Card, CardContent, CardDescription } from '@/components/ui/card';
 
 export default function Store() {
   const user = {
     name: "Harrison Chong",
     dpSrc: "User.png"
   };
+  const program = {
+    name: "JJ High School CCE Week 5",
+    // date: Date.now(),
+    date: "02/04/25",
+    students: 30,
+    hours: 2,
+  };
+
   const [cart, setCart] = useState([]);
 
   function addToCart(game) {
@@ -31,7 +40,7 @@ export default function Store() {
   }
 
   return (
-    <div className="flex bg-gradient-to-r from-light-violet to-extra-light-violet">
+    <div className="flex bg-gradient-to-r from-light-violet to-extra-light-violet min-h-screen">
       {/* <StoreNavbar username={"User"}/> */}
       <Sidebar />
       
@@ -50,10 +59,40 @@ export default function Store() {
           </div>
         </section>
 
-        {/* Featured Offerings */}
+        {/* Create Your Program */}
         <section className="max-w-4xl mx-auto px-8 py-4">
-          <h2 className='text-3xl text-white'>Featured Offerings</h2>
-          <Carousel className="w-full bg-gray-200 relative mt-6 mb-4">
+          <h2 className='text-3xl text-white mb-5'>Create Your Program</h2>
+          <div className="flex items-stretch space-x-10 bg-violet p-5 rounded-md border border-white">
+            <Card className="flex flex-col w-full bg-transparent border-none shadow-none space-y-2">
+              <CardContent className="flex justify-between w-full p-0">
+                <CardDescription className="text-white">Name:</CardDescription>
+                <CardDescription className="text-white font-bold">{user.name}</CardDescription>
+              </CardContent>
+              <CardContent className="flex justify-between w-full p-0">
+                <CardDescription className="text-white">Program Name:</CardDescription>
+                <CardDescription className="text-white font-bold">{program.name}</CardDescription>
+              </CardContent>
+            </Card>
+            <Card className="flex flex-col w-full bg-transparent border-none shadow-none space-y-2">
+              <CardContent className="flex justify-between w-full p-0">
+                <CardDescription className="text-white">Date:</CardDescription>
+                <CardDescription className="text-white font-bold">{program.date}</CardDescription>
+              </CardContent>
+              <CardContent className="flex justify-between w-full p-0">
+                <CardDescription className="text-white">Number of Students:</CardDescription>
+                <CardDescription className="text-white font-bold">{program.students}</CardDescription>
+              </CardContent>
+              <CardContent className="flex justify-between w-full p-0">
+                <CardDescription className="text-white">Class Time (Hours):</CardDescription>
+                <CardDescription className="text-white font-bold">{program.hours}</CardDescription>
+              </CardContent>
+            </Card>
+          </div>
+          <div className="flex w-full justify-center p-0 space-x-3 mt-5">
+            <Button className="bg-dark-violet border border-white hover:border-white hover:bg-extra-dark-violet">Modify your Program</Button>
+            <Button className="bg-dark-green border border-white hover:border-white hover:bg-extra-dark-green">Confirm your Order</Button>
+          </div>
+          {/* <Carousel className="w-full bg-gray-200 relative mt-6 mb-4">
             <CarouselContent className="space-x-3">
               {store_offerings.map((game, gindex) => {
                 return (
@@ -63,7 +102,7 @@ export default function Store() {
             </CarouselContent>
             <CarouselPrevious className="bg-dark-green text-slate-100 hover:bg-extra-dark-green hover:text-slate-100 left-3" />
             <CarouselNext className="bg-dark-green text-slate-100 hover:bg-extra-dark-green hover:text-slate-100 right-3" />
-          </Carousel>
+          </Carousel> */}
         </section>
 
         {/* Our Offerings */}

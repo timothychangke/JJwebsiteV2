@@ -2,32 +2,33 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Sidebar() {
   const navData = [
     {
       title: 'Store',
-      route: 'example',
+      route: 'store',
       iconSrc: 'Store.png',
     },
     {
       title: 'Programmes',
-      route: 'example',
+      route: 'programmes',
       iconSrc: 'Programmes.png',
     },
     {
       title: 'Analytics',
-      route: 'example',
+      route: 'analytics',
       iconSrc: 'Analytics.png',
     },
     {
       title: 'My Purchases',
-      route: 'example',
+      route: 'mypurchases',
       iconSrc: 'Purchases.png',
     },
     {
       title: 'Affiliate Link',
-      route: 'example',
+      route: 'affiliatelink',
       iconSrc: 'Affiliate.png',
     },
   ]
@@ -35,32 +36,31 @@ export default function Sidebar() {
   const navFooterData = [
     {
       title: 'Tutorial',
-      route: 'example',
+      route: 'tutorial',
       iconSrc: 'Tutorial.png',
     },
     {
       title: 'Ask Us A Question',
-      route: 'example',
+      route: 'ask',
       iconSrc: 'Question.png',
     },
     {
       title: 'Settings',
-      route: 'example',
+      route: 'settings',
       iconSrc: 'Settings.png',
     },
     {
       title: 'Log Out',
-      route: 'example',
+      route: 'logout',
       iconSrc: 'Logout.png',
-    },
-    {
-      title: 'Affiliate Link',
-      route: 'example',
-      iconSrc: 'Affiliate.png',
-    },
+    }
   ]
 
   const [sidebar, setSidebar] = useState(false);
+
+  function goTo() {
+
+  }
 
   return (
     <section className="z-10 fixed left-0 top-0 bottom-0 lg:static w-full xs:w-2/3 sm:w-2/5 md:w-1/3 lg:w-1/5">
@@ -88,10 +88,10 @@ export default function Sidebar() {
             <div className="mt-6">
               {navData.map((item, index) => {
                 return (
-                  <button className="flex items-center space-x-2 w-full px-4 py-1 mt-1 hover:bg-light-violet" key={index}>
+                  <Link href={item.route} className="flex items-center space-x-2 w-full px-4 py-1 mt-1 hover:bg-light-violet" key={index}>
                     <Image src={`/images/Store/${item.iconSrc}`} alt={item.title + "icon"} className="" width={25} height={25} />
                     <p className="text-sm">{item.title}</p>
-                  </button>
+                  </Link>
                 )
               })}
             </div>
@@ -99,10 +99,10 @@ export default function Sidebar() {
           <div className="pb-8">
             {navFooterData.map((item, index) => {
               return (
-                <button className="flex items-center space-x-2 w-full px-4 py-1 mt-1 hover:bg-light-violet" key={index}>
+                <Link href={item.route} className="flex items-center space-x-2 w-full px-4 py-1 mt-1 hover:bg-light-violet" key={index} onClick={goTo(item.route)}>
                   <Image src={`/images/Store/${item.iconSrc}`} alt={item.title + "icon"} className="" width={25} height={25} />
                   <p className="text-sm">{item.title}</p>
-                </button>
+                </Link>
               )
             })}
           </div>
