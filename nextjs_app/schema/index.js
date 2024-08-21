@@ -7,9 +7,6 @@ export const registerSchema = zod.object({
   lastName: zod.string().min(1, {
     message: 'Enter a valid last name',
   }),
-  position: zod.enum(['student', 'teacher'], {
-    message: 'Select an option',
-  }),
   email: zod.string().email({
     message: 'Enter a valid Email',
   }),
@@ -19,6 +16,16 @@ export const registerSchema = zod.object({
   confirmPassword: zod.string().min(8, {
     message: 'Password must be at least 8 characters long',
   }),
+  dob: zod.date({
+    message: 'Date of Birth is not a valid date',
+  }),
+  typeOfAccount: zod.enum(['Institution', 'Organisation', 'Individual'], {
+    message: 'Select an option',
+  }),
+  phoneNumber: zod.number().min(8, {
+    message: 'Phone number is not a valid number',
+  }),
+  tos: zod.boolean(),
 });
 
 export const loginSchema = zod.object({

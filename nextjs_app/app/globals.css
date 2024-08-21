@@ -81,4 +81,16 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  @font-face {
+    font-family: 'Inter-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/Inter-Regular.otf) format('otf');
+  }
+}
+
+body {
+  font-family: 'Garet-Book', sans-serif;
 }
