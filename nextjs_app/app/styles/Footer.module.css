@@ -1,0 +1,148 @@
+.footer {
+  background-image: url('/images/Footer.svg');
+  background-size: cover;
+  background-position: center bottom;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
+  padding-top: 20.4rem;
+  position: relative;
+  min-height: 80vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  justify-items: center;
+  padding: 2rem;
+  gap: 10px;
+  width: 100%;
+}
+
+.column {
+  text-align: left;
+  font-size: 1.2vw;
+}
+
+.column h4 {
+  font-size: 1.4vw; 
+  font-weight: bold;
+  color: #306054;
+}
+
+.column li {
+  color: #674C93;
+  cursor: pointer;
+}
+
+.column li:hover {
+  text-decoration: underline;
+}
+
+.footerBottom {
+  background-color: rgba(162, 193, 124, 0); 
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerBottom p {
+  font-size: 1vw; 
+}
+
+.footerBottom img {
+  width: 20%;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1600px) {
+
+}
+
+@media (max-width: 1200px) {
+  .column {
+    font-size: 1.6vw;
+  }
+  .column h4 {
+    font-size: 1.9vw;
+  }
+  .footerBottom p {
+    font-size: 1.3vw;
+  }
+  .footerBottom img {
+    width: 20%;
+    margin-bottom: 10px;
+  }
+
+  .footer {
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .footer {
+    padding-top: 2rem;
+  }
+
+  .column {
+    font-size: 1vw;
+  }
+  .column h4 {
+    font-size: 1vw;
+  }
+  .footerBottom p {
+    font-size: 1vw;
+  }
+
+  .footerBottom img {
+    width: 30%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .footer {
+    padding-top: 2rem;
+  }
+
+  .column h4 {
+    font-size: 1vw;
+  }
+
+  .column li {
+    font-size: 1vw;
+  }
+
+  .footerBottom p {
+    font-size: 0.7vw;
+  }
+
+  .footerBottom img {
+    width: 50%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 800px) {
+  .container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 20px;
+    overflow-x: auto; 
+  }
+
+  .column {
+    width: auto;
+    font-size: 1.5vw; 
+  }
+
+  .column h4 {
+    font-size: 1.7vw; 
+  }
+
+  .footerBottom p {
+    font-size: 1.5vw; 
+  }
+}

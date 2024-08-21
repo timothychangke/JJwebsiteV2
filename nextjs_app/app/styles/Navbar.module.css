@@ -1,105 +1,254 @@
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  background-image: url('/images/Header.svg'), linear-gradient(180deg, rgba(8,71,56,1) 31%, rgba(103,77,147,1) 100%);
+  background-size: cover, cover;
+  background-position: center, center;
+  margin-bottom: -2.9rem;
+  padding: 0 1rem;
+  flex-wrap: wrap; 
 }
 
-.logoWithPhoto {
-  display: flex;
-  align-items: center;
+.logo img {
+  width: 90%;
+  margin: -15px;
 }
 
-.photo {
-  margin-right: 10px; /* Adjust spacing between photo and logo */
+.menuContainer {
+  position: relative;
+  order: 1; 
 }
 
-.photo img {
-  width: 60px; /* Adjust photo width as needed */
-  height: 60px; /* Adjust photo height as needed */
-  border-radius: 20%; /* Optional: Rounded photo */
+.menu {
+  cursor: pointer;
+  margin-left: -2rem;
+  margin-right: 1rem;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
+.dropdown {
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  background-color: rgba(128, 128, 128, 0.8);
+  color: white;
+  border-radius: 4px;
+  padding: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown a {
+  display: block;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-decoration: none;
   color: white;
 }
 
-.navLinks {
-  list-style: none;
+.dropdown a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  order: 2; /* Ensure the links are in the middle */
+}
+
+.links a {
+  margin: 1.2rem;
+  text-decoration: none;
+  color: white;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.auth {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center the main links horizontally */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
+  order: 3; /* Ensure the auth buttons are last */
 }
 
-.navLinks li {
-  margin-right: 40px;
-}
-
-.navLinks a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.navLinks a:hover {
-  color: #4caf50;
-}
-
-.regLinks {
-  display: flex;
-  align-items: center;
-}
-
-.regLinks li {
-  margin-left: 20px;
-}
-
-.regLinks a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.regLinks a:hover {
-  color: #4caf50;
-}
-
-.button {
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.buttonTransparent {
+.auth button {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.3rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.363);
   background-color: transparent;
   color: white;
-  border: 1px solid white; /* Optional: Add border for visibility */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 10px;
 }
 
-.buttonTransparent:hover {
-  background-color: transparent;
-  color: green;
-  border: 1px solid green;
+.separator {
+  width: 1px;
+  height: 2.1rem;
+  background-color: rgba(255, 255, 255, 0.418);
+  margin: 0 1rem;
 }
 
-.buttonPurple {
-  background-color: darkmagenta;
-  color: white;
-  border:1px solid white;
+.auth .signup {
+  border-radius: 1;
+  background-color: #4b0082;
 }
 
-.buttonPurple:hover {
-  background-color: purple; 
-  color: green;
-  border: 1px solid green;
+.auth button:hover {
+  background-color: white;
+  color: #4b0082;
+}
+
+.vineContainer {
+  position: absolute;
+  bottom: -20px;
+  margin-top: 21rem; 
+  width: 100%; 
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+}
+
+.vine {
+  width: 100%; 
+  height: auto;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 1600px) {
+
+  .links a {
+    margin: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .auth button {
+    padding: 0.2rem 0.8rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    font-size: 0.9rem;
+  }
+
+  
+  .vineContainer {
+    bottom: -13px;
+  }
+
+  .separator {
+    width: 1px;
+    height: 1.8rem;
+    margin: 0 0.7rem;
+  }
+}
+
+@media (max-width: 1200px) {
+
+  .links a {
+    margin: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .auth button {
+    padding: 0.2rem 0.8rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    font-size: 0.9rem;
+  }
+
+  .vineContainer {
+    bottom: -10px;
+  }
+
+  .separator {
+    width: 1px;
+    height: 1.8rem;
+    margin: 0 0.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .logo img {
+    width: 0px;
+  }
+
+  .links a {
+    margin: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .auth button {
+    padding: 0.2rem 0.6rem;
+    margin: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .vineContainer {
+    bottom: -6px;
+  }
+
+  .menu {
+    font-size: 0.8rem;
+    padding-left: 1.2rem;
+    margin-right: -0.1rem;
+  }
+
+  .separator {
+    width: 1px;
+    height: 1.8rem;
+    margin: 0 0.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .menu {
+    font-size: 0.7rem;
+    padding-left: 1rem;
+    margin-right: -0.5rem;
+  }
+
+  .navbar {
+    padding: 0.5rem 0.1rem;
+  }
+
+  .logo img {
+    width: 0px;
+    margin-right: 1rem;
+  }
+
+  .links a {
+    margin: 0.3rem;
+    font-size: 0.7rem;
+  }
+
+  .auth button {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+  }
+
+  .vineContainer {
+    bottom: -5px;
+  }
+
+  .separator {
+    width: 1px;
+    height: 1.2rem;
+    margin: 0 0.5rem;
+  }
 }
