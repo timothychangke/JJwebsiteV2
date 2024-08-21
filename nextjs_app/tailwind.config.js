@@ -14,7 +14,7 @@ module.exports = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
-      },
+      }
     },
     extend: {
       screens: {
@@ -24,10 +24,14 @@ module.exports = {
       colors: {
         "beige": "#F1E8DB",
         "dark-green": "#306054",
-        "darker-green": "#1a4238",
+        "extra-dark-green": "#1a4238",
+        "normal-green": "#91BA60",
         "light-green": "#A2C17C",
         "violet": "#674C93",
         "dark-violet": "#482b77",
+        "extra-dark-violet": "#3B2A57",
+        "light-violet": "#A48DC8",
+        "extra-light-violet": "#BBAFCB",
         "grey": "#d6d2d2",
         "stone": "#73717d",
         "brown": "#5a3b22",

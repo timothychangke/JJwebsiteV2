@@ -9,14 +9,14 @@ const HeroSection = () => {
   )
  
   return (
-    <section className='p-4 relative'>
-      <Carousel plugins={[plugin.current]} className="absolute top-0 bottom-0 left-0 right-0">
+    <>
+      <Carousel plugins={[plugin.current]} className="absolute top-0 bottom-0 left-0 right-0 overflow-hidden">
         <CarouselContent className="absolute top-0 bottom-0 left-0 right-0 ml-0">
-          <CarouselItem className="w-full bg-cover bg-center" style={{ backgroundImage: `url(/images/hero-background.jpg)` }}>
+          <CarouselItem className="w-full bg-cover bg-center" style={{ backgroundImage: `url(/images/Homepage/hero-background.jpg)` }}>
           </CarouselItem>
-          <CarouselItem className="w-full bg-cover bg-center" style={{ backgroundImage: `url(/images/hero-background.jpg)` }}>
+          <CarouselItem className="w-full bg-cover bg-center" style={{ backgroundImage: `url(/images/Homepage/hero-background.jpg)` }}>
           </CarouselItem>
-          <CarouselItem className="w-full bg-cover bg-center" style={{ backgroundImage: `url(/images/hero-background.jpg)` }}>
+          <CarouselItem className="w-full bg-cover bg-center" style={{ backgroundImage: `url(/images/Homepage/hero-background.jpg)` }}>
           </CarouselItem>
         </CarouselContent>
       </Carousel>
@@ -26,7 +26,7 @@ const HeroSection = () => {
         <p className='text-base sm:text-xl md:text-2xl mt-4 text-white font-bold leading-snug'>Cultivate Deeper Empathy through Play</p>
         <p className='text-sm sm:text-base md:text-lg mt-1 text-white leading-snug'>We create games with meaningful social themes</p>
       </div>
-    </section>
+      </>
   );
 };
 
