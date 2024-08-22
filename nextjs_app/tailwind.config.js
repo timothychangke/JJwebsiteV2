@@ -33,6 +33,7 @@ module.exports = {
         "light-violet": "#A48DC8",
         "extra-light-violet": "#BBAFCB",
         "grey": "#d6d2d2",
+        "dark-grey": "#5E5E5E",
         "stone": "#73717d",
         "brown": "#5a3b22",
 

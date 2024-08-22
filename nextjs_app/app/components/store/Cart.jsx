@@ -25,23 +25,27 @@ import { useToast } from "@/components/ui/use-toast"
 import CheckoutConfirmation from "./CheckoutConfirmation";
 
 const Cart = (props) => {
-  const items = props.cart;
+  let { cart, setCart } = props;
   const { toast } = useToast();
-  const [cart, setCart] = useState(items);
   const [connections, setConnections] = useState([]);
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
 
   let cartTotal = 0;
-  items.forEach((item, index) => {
+  cart.forEach((item, index) => {
     cartTotal += item.price * connections[index];
   });
 
   useEffect(() => {
-    items.forEach((item) => {
+    cartTotal = 0;
+    cart.forEach((item) => {
       setConnections([...connections, item.connections]);
+    }, () => {
+      cartTotal += item.price * connections[index];
+      // console.log(connections);
+      // console.log(cartTotal);
     });
-  }, [items]);
+  }, [cart]);
 
   function addConnection(gameIndex) {
     setConnections(connections.map((connect, index) => {
@@ -63,8 +67,9 @@ const Cart = (props) => {
     }));
   }
 
-  function removeFromCart(index) {
-
+  function removeFromCart(itemIndex) {
+    setCart(cart => cart.filter((item, index) => index !== itemIndex));
+    setConnections(connections => connections.filter((item, index) => index !== itemIndex));
   }
 
   function applyCoupon() {
@@ -86,14 +91,13 @@ const Cart = (props) => {
     <Dialog>
       <DialogTrigger className='relative hover:bg-transparent p-0'>
         <Image alt="Shopping Cart" className='' src={"/images/Store/Cart.png"} width={40} height={30}></Image>
-        <span className='absolute top-0 right-0 px-0.5 min-w-5 h-5 leading-[20px] bg-dark-violet rounded-full text-white text-xs text-center'>{items.length}</span>
+        <span className='absolute top-0 right-0 px-0.5 min-w-5 h-5 leading-[20px] bg-dark-violet rounded-full text-white text-xs text-center'>{cart.length}</span>
       </DialogTrigger>
 
       <DialogContent className="bg-violet border-0 text-white max-w-[768px] max-h-screen overflow-y-auto">
         <DialogHeader className="mt-3">
-          <DialogTitle>My Shopping Cart</DialogTitle>
+          <DialogTitle className="text-2xl">My Program</DialogTitle>
         </DialogHeader>
-
         <Table className='bg-white rounded-md w-full'>
           <TableHeader className="table-fixed table w-full">
             <TableRow className="bg-violet/30 hover:bg-violet/20">
@@ -106,12 +110,12 @@ const Cart = (props) => {
             </TableRow>
           </TableHeader>
           <TableBody className="block max-h-60 min-h-20 overflow-y-auto w-full">
-            {items.length == 0 && (
+            {cart.length == 0 && (
               <TableRow className="hover:bg-transparent">
-                <TableCell>Your cart is empty.</TableCell>
+                <TableCell className="text-stone">Your cart is empty.</TableCell>
               </TableRow>
             )}
-            {items.map((item, index) => (
+            {cart.map((item, index) => (
               <TableRow key={index} className="table-fixed table w-full hover:bg-violet/10 text-extra-dark-violet">
                 <TableCell className="font-medium text-center w-10 py-2 pl-4 pr-2">{index+1}</TableCell>
                 <TableCell className="py-2 px-2">

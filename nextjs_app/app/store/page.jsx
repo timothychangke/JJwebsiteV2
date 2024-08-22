@@ -55,7 +55,7 @@ export default function Store() {
             <div className="rounded-full w-10 overflow-hidden flex items-center">
               <Image alt="User Icon" className='' src={`/images/Store/${user.dpSrc}`} width={80} height={80}></Image>
             </div>
-            <Cart cart={cart} />
+            <Cart cart={cart} setCart={setCart} />
           </div>
         </section>
 
@@ -63,7 +63,7 @@ export default function Store() {
         <section className="max-w-4xl mx-auto px-8 py-4">
           <h2 className='text-3xl text-white mb-5'>Create Your Program</h2>
           <div className="flex items-stretch space-x-10 bg-violet p-5 rounded-md border border-white">
-            <Card className="flex flex-col w-full bg-transparent border-none shadow-none space-y-2">
+            <Card className="flex flex-col w-full bg-transparent border-0 shadow-none space-y-2">
               <CardContent className="flex justify-between w-full p-0">
                 <CardDescription className="text-white">Name:</CardDescription>
                 <CardDescription className="text-white font-bold">{user.name}</CardDescription>
@@ -73,7 +73,7 @@ export default function Store() {
                 <CardDescription className="text-white font-bold">{program.name}</CardDescription>
               </CardContent>
             </Card>
-            <Card className="flex flex-col w-full bg-transparent border-none shadow-none space-y-2">
+            <Card className="flex flex-col w-full bg-transparent border-0 shadow-none space-y-2">
               <CardContent className="flex justify-between w-full p-0">
                 <CardDescription className="text-white">Date:</CardDescription>
                 <CardDescription className="text-white font-bold">{program.date}</CardDescription>

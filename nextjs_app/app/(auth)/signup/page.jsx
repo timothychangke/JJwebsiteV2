@@ -102,7 +102,7 @@ const SignupPage = () => {
         throw new Error(errorData.error || 'Failed to register');
       }
       toast.success('Registration successful');
-      router.push("/auth/login")
+      router.push("/login")
     } catch (err) {
       console.log(err);
     } finally {

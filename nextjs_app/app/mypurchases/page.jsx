@@ -5,7 +5,7 @@ import Sidebar from '../components/store/Sidebar';
 import Cart from "../components/store/Cart";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-export default function Store() {
+export default function MyPurchases() {
   const user = {
     name: "Harrison Chong",
     dpSrc: "User.png"

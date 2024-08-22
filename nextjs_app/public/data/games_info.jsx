@@ -50,8 +50,8 @@ export const games_info = [
         "values":["Fast Fashion","Recycling Literacy","Food Waste"],
         "button":"Whole Module",
         "link":"",
-        "connections": 30,
-        "price": 5
+        "connections": 15,
+        "price": 9
       },
       {
         "image": "",
@@ -60,8 +60,8 @@ export const games_info = [
         "values":["Decision-Making","Opportunity Cost"],
         "button":"Whole Module",
         "link":"",
-        "connections": 30,
-        "price": 5
+        "connections": 18,
+        "price": 6
       }
     ]
   },

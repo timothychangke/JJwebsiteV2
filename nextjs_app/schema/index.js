@@ -36,3 +36,12 @@ export const loginSchema = zod.object({
     message: 'Password must be at least 8 characters long',
   }),
 });
+
+export const sessionSchema = zod.object({
+  sessionName: zod.string().min(1),
+  sessionDate: zod.date({
+    message: 'Date of Birth is not a valid date',
+  }),
+  sessionTime: zod.string().min(1),
+  studentsNum: zod.string().min(1),
+});
