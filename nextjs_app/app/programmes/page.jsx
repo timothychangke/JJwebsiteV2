@@ -11,28 +11,6 @@ export default function Programmes() {
     name: "Harrison Chong",
     dpSrc: "User.png"
   };
-  const purchases = [
-    {
-        game: "Supermarket Scramble",
-        imgSrc: "SupermarketScramble.png",
-        connections: 30,
-    },
-    {
-        game: "Balance the Bistro",
-        imgSrc: "BalanceTheBistro.png",
-        connections: 130,
-    },
-    {
-        game: "Runway",
-        imgSrc: "Runway.png",
-        connections: 15,
-    },
-    {
-        game: "RecycleMe",
-        imgSrc: "RecycleMe.png",
-        connections: 93,
-    }
-  ];
 
   const [cart, setCart] = useState([]);
 

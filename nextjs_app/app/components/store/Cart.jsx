@@ -37,16 +37,20 @@ const Cart = (props) => {
   });
 
   useEffect(() => {
-    cartTotal = 0;
+    let array = [];
     cart.forEach((item) => {
-      setConnections([...connections, item.connections]);
-    }, () => {
-      cartTotal += item.price * connections[index];
-      // console.log(connections);
-      // console.log(cartTotal);
+      array.push(item.connections);
     });
+    setConnections(array);
   }, [cart]);
 
+  useEffect(() => {
+    cartTotal = 0;
+    cart.forEach((item) => {
+      cartTotal += item.price * item.connections;
+    });
+  }, [connections]);
+  
   function addConnection(gameIndex) {
     setConnections(connections.map((connect, index) => {
       if (index === gameIndex) {
@@ -69,7 +73,6 @@ const Cart = (props) => {
 
   function removeFromCart(itemIndex) {
     setCart(cart => cart.filter((item, index) => index !== itemIndex));
-    setConnections(connections => connections.filter((item, index) => index !== itemIndex));
   }
 
   function applyCoupon() {

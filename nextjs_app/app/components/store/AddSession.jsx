@@ -53,10 +53,20 @@ import { sessionSchema } from '@/schema';
 
 const AddSession = (props) => {
   const { toast } = useToast();
-  const [cart, setCart] = useState();
   const [connections, setConnections] = useState([]);
+  const [sessionTime, setSessionTime] = useState("10:00AM");
+  
+  const form = useForm({
+    resolver: zodResolver(sessionSchema),
+    defaultValues: {
+      sessionName: '',
+      sessionDate: '',
+      sessionTime: '',
+      studentsNum: 0,
+    },
+  });
 
-  const purchases = [
+  let inventory = [
     {
         game: "Supermarket Scramble",
         imgSrc: "SupermarketScramble.png",
@@ -80,55 +90,42 @@ const AddSession = (props) => {
     {
         game: "RecycleMe",
         imgSrc: "RecycleMe.png",
-        connections: 93,
-    },
-    {
-        game: "RecycleMe",
-        imgSrc: "RecycleMe.png",
-        connections: 93,
-    },
-    {
-        game: "RecycleMe",
-        imgSrc: "RecycleMe.png",
-        connections: 93,
+        connections: 40,
     }
   ];
 
-  // useEffect(() => {
-  //   items.forEach((item) => {
-  //     setConnections([...connections, item.connections]);
-  //   });
-  // }, [items]);
+  useEffect(() => {
+    let array = [];
+    inventory.forEach((item) => {
+      array.push(form.getValues().studentsNum);
+    });
+    setConnections(array);
+  }, []);
 
-  // function addConnection(gameIndex) {
-  //   setConnections(connections.map((connect, index) => {
-  //     if (index === gameIndex) {
-  //       return connect+1;
-  //     } else {
-  //       return connect;
-  //     }
-  //   }));
-  // }
+  function addConnection(gameIndex) {
+    setConnections(connections.map((connect, index) => {
+      if (index === gameIndex) {
+        return connect+1;
+      } else {
+        return connect;
+      }
+    }));
+  }
 
-  // function minusConnection(gameIndex) {
-  //   setConnections(connections.map((connect, index) => {
-  //     if (index === gameIndex) {
-  //       return connect-1;
-  //     } else {
-  //       return connect;
-  //     }
-  //   }));
-  // }
-
-  const form = useForm({
-    resolver: zodResolver(sessionSchema),
-    defaultValues: {
-      sessionName: '',
-      sessionDate: '',
-      sessionTime: '',
-      studentsNum: 0,
-    },
-  });
+  function minusConnection(gameIndex) {
+    setConnections(connections.map((connect, index) => {
+      if (index === gameIndex && connect>0) {
+        return connect-1;
+      } else {
+        return connect;
+      }
+    }));
+  }
+  
+  const selectSessionTime = (value) => {
+    setSessionTime(value);
+  }
+  
   const onSubmit = async (data) => {
     try {
       const response = await fetch('', {
@@ -155,7 +152,7 @@ const AddSession = (props) => {
   return (
     <Dialog>
       <DialogTrigger className='relative hover:bg-transparent p-0'>
-        <button className='text-white relative p-0'>Add a Session +<span className='absolute h-px w-full bg-white bottom-0 right-0'></span></button>
+        <div className='text-white relative p-0'>Add a Session +<span className='absolute h-px w-full bg-white bottom-0 right-0'></span></div>
       </DialogTrigger>
 
       <DialogContent className="bg-violet border-0 text-white max-w-[900px] max-h-screen overflow-y-auto flex flex-col items-stretch">
@@ -231,9 +228,9 @@ const AddSession = (props) => {
                       render={({ field }) => (
                         <FormItem>
                           <Select
-                            // onValueChange={selectAccountType}
-                            // defaultValue={accountType}
-                            // value={accountType}
+                            onValueChange={selectSessionTime}
+                            defaultValue={sessionTime}
+                            value={sessionTime}
                           >
                             <FormControl>
                               <SelectTrigger>
@@ -241,9 +238,9 @@ const AddSession = (props) => {
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="Institution" className="cursor-pointer">Institution</SelectItem>
-                              <SelectItem value="Organisation" className="cursor-pointer">Organisation</SelectItem>
-                              <SelectItem value="Individual" className="cursor-pointer">Individual</SelectItem>
+                              <SelectItem value="10:00AM" className="cursor-pointer">10:00AM</SelectItem>
+                              <SelectItem value="11:00AM" className="cursor-pointer">11:00AM</SelectItem>
+                              <SelectItem value="12:00PM" className="cursor-pointer">12:00PM</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
@@ -273,20 +270,22 @@ const AddSession = (props) => {
             </CardHeader>
             <Table>
               <TableHeader className="bg-white">
-                <TableHead className="text-black">
-                  Game Name
-                </TableHead>
-                <TableHead className="text-black text-center">
-                  Remaining Connections
-                </TableHead>
-                <TableHead className="text-white text-center bg-blue-200">
-                  Session Connections
-                </TableHead>
+                <TableRow className="border-none">
+                  <TableHead className="text-black">
+                    Game Name
+                  </TableHead>
+                  <TableHead className="text-black text-center">
+                    Remaining Connections
+                  </TableHead>
+                  <TableHead className="text-white text-center bg-dull-blue">
+                    Session Connections
+                  </TableHead>
+                </TableRow>
               </TableHeader>
               <TableBody className="bg-white">
-                {purchases.map((item, index) => {
+                {inventory.map((item, index) => {
                   return (
-                    <TableRow className="border-blue-200">
+                    <TableRow className="border-dull-blue" key={index}>
                       <TableCell className="flex items-center space-x-2 py-2">
                         {item.imgSrc && (
                           <Image src={`/images/Homepage/${item.imgSrc}`} alt={item.name + " icon"} width={25} height={25} />
@@ -294,13 +293,13 @@ const AddSession = (props) => {
                         <span>{item.game}</span>
                       </TableCell>
                       <TableCell className="py-2 items-center text-center font-semibold">
-                        {item.connections}
+                        {item.connections - connections[index]}
                       </TableCell>
-                      <TableCell className="py-2 items-center text-center bg-blue-200">
+                      <TableCell className="py-2 items-center text-center bg-dull-blue">
                         <div className="flex justify-between items-center">
-                          {/* <Button variant="ghost" className="w-6 h-6 p-0 mr-2 text-white rounded-full border-2 border-violet hover:border-extra-dark-violet bg-violet/80 hover:bg-violet hover:text-white" onClick={() => minusConnection(index)}>-</Button> */}
-                          {/* <span>{connections[index]}</span> */}
-                          {/* <Button variant="ghost" className="w-6 h-6 p-0 ml-2 text-white rounded-full border-2 border-violet hover:border-extra-dark-violet bg-violet/80 hover:bg-violet hover:text-white" onClick={() => addConnection(index)}>+</Button> */}
+                          <Button variant="ghost" className="w-6 h-6 p-0 mr-2 text-white rounded-full border-2 border-slate-800 hover:border-slate-900 bg-slate-800/80 hover:bg-slate-800 hover:text-white" onClick={() => minusConnection(index)}>-</Button>
+                          <span className='text-black'>{connections[index]}</span>
+                          <Button variant="ghost" className="w-6 h-6 p-0 ml-2 text-white rounded-full border-2 border-slate-800 hover:border-slate-900 bg-slate-800/80 hover:bg-slate-800 hover:text-white" onClick={() => addConnection(index)}>+</Button>
                         </div>
                       </TableCell>
                     </TableRow>
@@ -315,23 +314,25 @@ const AddSession = (props) => {
               </h5>
               <Table>
                 <TableHeader className="bg-light-violet">
-                  <TableHead className="text-black h-auto py-1.5">
-                    Game Name
-                  </TableHead>
-                  <TableHead className="text-black text-center h-auto py-1.5">
-                    Session Connections
-                  </TableHead>
+                  <TableRow className="border-none">
+                    <TableHead className="text-black h-auto pt-1 pb-1.5">
+                      Game Name
+                    </TableHead>
+                    <TableHead className="text-black text-center h-auto pt-1 pb-1.5">
+                      Session Connections
+                    </TableHead>
+                  </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {purchases.map((item, index) => {
+                  {inventory.map((item, index) => {
                     const style = (index%2==0 ? "h-auto border-0 bg-extra-light-violet" : "h-auto border-0")
                     return (
-                      <TableRow className={style}>
+                      <TableRow className={style} key={index}>
                         <TableCell className="py-1">
                           {index+1}. {item.game}
                         </TableCell>
                         <TableCell className="py-1 items-center text-center">
-                          {item.connections}
+                          {connections[index]}
                         </TableCell>
                       </TableRow>
                     )
