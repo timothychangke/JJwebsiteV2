@@ -5,7 +5,6 @@ import { Input } from '@/components/ui/input';
 import { 
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger
@@ -13,18 +12,15 @@ import {
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
-  TableFooter,
 } from "@/components/ui/table";
 import {
   Form,
   FormControl,
   FormField,
-  FormLabel,
   FormItem,
   FormMessage,
 } from '@/components/ui/form';
@@ -44,7 +40,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -160,7 +156,8 @@ const AddSession = (props) => {
           <DialogTitle className="text-2xl">Add a Session</DialogTitle>
         </DialogHeader>
 
-        <section className='flex flex-col space-x-5 md:flex-row justify-center mb-2'>
+        {/* Enter Sessions Details */}
+        <section className='flex flex-col space-x-0 space-y-5 md:space-x-5 md:space-y-0 md:flex-row justify-center mb-2'>
           <Card className="bg-transparent border-0 shadow-none grow">
             <CardHeader className="p-0 m-0 mb-3">
               <CardTitle className="text-lg text-white">Enter Sessions Details</CardTitle>
@@ -263,69 +260,74 @@ const AddSession = (props) => {
               </Form>
             </CardContent>
           </Card>
-
+          
+          {/* Add Purchased Products */}
           <Card className="bg-transparent border-0 shadow-none">
             <CardHeader className="p-0 m-0 mb-3">
               <CardTitle className="text-lg text-white">Add Your Purchased Products</CardTitle>
             </CardHeader>
-            <Table>
-              <TableHeader className="bg-white">
-                <TableRow className="border-none">
-                  <TableHead className="text-black">
-                    Game Name
-                  </TableHead>
-                  <TableHead className="text-black text-center">
-                    Remaining Connections
-                  </TableHead>
-                  <TableHead className="text-white text-center bg-dull-blue">
-                    Session Connections
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody className="bg-white">
-                {inventory.map((item, index) => {
-                  return (
-                    <TableRow className="border-dull-blue" key={index}>
-                      <TableCell className="flex items-center space-x-2 py-2">
-                        {item.imgSrc && (
-                          <Image src={`/images/Homepage/${item.imgSrc}`} alt={item.name + " icon"} width={25} height={25} />
-                        )}
-                        <span>{item.game}</span>
-                      </TableCell>
-                      <TableCell className="py-2 items-center text-center font-semibold">
-                        {item.connections - connections[index]}
-                      </TableCell>
-                      <TableCell className="py-2 items-center text-center bg-dull-blue">
-                        <div className="flex justify-between items-center">
-                          <Button variant="ghost" className="w-6 h-6 p-0 mr-2 text-white rounded-full border-2 border-slate-800 hover:border-slate-900 bg-slate-800/80 hover:bg-slate-800 hover:text-white" onClick={() => minusConnection(index)}>-</Button>
-                          <span className='text-black'>{connections[index]}</span>
-                          <Button variant="ghost" className="w-6 h-6 p-0 ml-2 text-white rounded-full border-2 border-slate-800 hover:border-slate-900 bg-slate-800/80 hover:bg-slate-800 hover:text-white" onClick={() => addConnection(index)}>+</Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  )
-                })}
-              </TableBody>
-            </Table>
-            <div className='bg-light-violet'>
-              <h5 className='p-0 relative inline-block mt-3 mb-2 mx-4 text-sm font-semibold'>
-                Session Summary
-                <span className='h-px bg-black w-full absolute bottom-0 right-0'></span>
-              </h5>
+            <div className="rounded-t-sm border-x border-t">
               <Table>
-                <TableHeader className="bg-light-violet">
+                <TableHeader className="bg-white">
                   <TableRow className="border-none">
-                    <TableHead className="text-black h-auto pt-1 pb-1.5">
+                    <TableHead className="text-xs text-black/70 h-10">
                       Game Name
                     </TableHead>
-                    <TableHead className="text-black text-center h-auto pt-1 pb-1.5">
+                    <TableHead className="text-xs text-black/70 text-center h-10">
+                      Remaining Connections
+                    </TableHead>
+                    <TableHead className="text-xs text-white text-center h-10 bg-dull-blue hover:bg-dull-blue/90">
+                      Session Connections
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody className="bg-white">
+                  {inventory.map((item, index) => {
+                    return (
+                      <TableRow className="border-dull-blue" key={index}>
+                        <TableCell className="flex items-center space-x-2 py-2">
+                          {item.imgSrc && (
+                            <Image src={`/images/Homepage/${item.imgSrc}`} alt={item.name + " icon"} width={25} height={25} />
+                          )}
+                          <span>{item.game}</span>
+                        </TableCell>
+                        <TableCell className="py-2 items-center text-center font-semibold">
+                          {item.connections - connections[index]}
+                        </TableCell>
+                        <TableCell className="py-2 items-center text-center bg-dull-blue hover:bg-dull-blue/90">
+                          <div className="flex justify-between items-center">
+                            <Button variant="ghost" className="w-6 h-6 p-0 mr-2 text-white rounded-full border-2 border-slate-800 hover:border-slate-900 bg-slate-800/80 hover:bg-slate-800 hover:text-white" onClick={() => minusConnection(index)}>-</Button>
+                            <span className='text-black'>{connections[index]}</span>
+                            <Button variant="ghost" className="w-6 h-6 p-0 ml-2 text-white rounded-full border-2 border-slate-800 hover:border-slate-900 bg-slate-800/80 hover:bg-slate-800 hover:text-white" onClick={() => addConnection(index)}>+</Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })}
+                </TableBody>
+              </Table>
+            </div>
+            <div className='bg-light-violet border-x'>
+              <h5 className='p-0 relative inline-block mt-3 mb-1 mx-4 text-sm text-black/70 font-semibold'>
+                Session Summary
+              </h5>
+            </div>
+            <div className="bg-light-violet rounded-b-md border-x border-b">
+              <Table>
+                <TableHeader className="bg-light-violet">
+                  <TableRow className="border-none hover:bg-transparent">
+                    <TableHead className="text-xs text-black/70 h-auto pt-1 pb-1">
+                      Game Name
+                    </TableHead>
+                    <TableHead className="text-xs text-black/70 text-center h-auto pt-1 pb-1">
                       Session Connections
                     </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {inventory.map((item, index) => {
-                    const style = (index%2==0 ? "h-auto border-0 bg-extra-light-violet" : "h-auto border-0")
+                    let style = "h-auto border-0";
+                    style += (index%2==0 ? " bg-extra-light-violet hover:bg-extra-light-violet" : " hover:bg-light-violet");
                     return (
                       <TableRow className={style} key={index}>
                         <TableCell className="py-1">
