@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
-import Sidebar from '../components/store/Sidebar';
+import { SideBarHeader, SideBarContent, Sidebar } from '../components/store/Sidebar';
 import Cart from "../components/store/Cart";
 import AddSession from "../components/store/AddSession";
 import { CardDescription } from '@/components/ui/card';
@@ -17,12 +17,18 @@ export default function Programmes() {
   return (
     <div className="flex bg-gradient-to-r from-light-violet to-extra-light-violet min-h-screen items-stretch">
       {/* <StoreNavbar username={"User"}/> */}
-      <Sidebar />
+      <div className='hidden lg:flex w-2/5 max-w-80 flex-col space-y-2 justify-between border-r border-black bg-extra-light-violet'>
+        <SideBarHeader/>
+        <SideBarContent />
+      </div>
       
       <main className="w-full lg:w-4/5 pt-4 flex flex-col">
         {/* Programmes */}
         <section className="max-w-4xl px-8 py-4 flex justify-between">
-          <h2 className='pl-8 lg:pl-0 text-3xl text-dark-green font-bold'>Programmes</h2>
+          <div className='flex'>
+            <Sidebar />
+            <h2 className='pl-8 lg:pl-0 text-3xl text-dark-green font-bold'>Programmes</h2>
+          </div>
           <div className="flex max-w-80 space-x-5 items-center">
             <div className="flex items-center">
               <p className="font-bold text-sm text-dark-green text-right leading-tight">{user.name}</p>
