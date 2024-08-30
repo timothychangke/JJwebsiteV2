@@ -38,10 +38,16 @@ export const loginSchema = zod.object({
 });
 
 export const sessionSchema = zod.object({
-  sessionName: zod.string().min(1),
-  sessionDate: zod.date({
-    message: 'Date of Birth is not a valid date',
+  sessionName: zod.string().min(1, {
+    message: 'Please enter a valid session name',
   }),
-  sessionTime: zod.string().min(1),
-  studentsNum: zod.string().min(1),
+  sessionDate: zod.date({
+    message: 'Please select a valid date',
+  }),
+  sessionTime: zod.string().min(1, {
+    message: 'Please select a valid session time',
+  }),
+  studentsNum: zod.number().min(1, {
+    message: 'Minimum of 1 student(s) expected',
+  }),
 });
