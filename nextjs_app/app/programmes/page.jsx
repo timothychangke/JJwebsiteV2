@@ -3,10 +3,12 @@ import Image from 'next/image';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { SideBarHeader, SideBarContent, Sidebar } from '../components/store/Sidebar';
 import { Card, CardContent, CardHeader, CardDescription, CardTitle } from '@/components/ui/card';
+import { games_info } from "@/public/data/games_info";
+import { SideBarHeader, SideBarContent, Sidebar } from '../components/store/Sidebar';
 import Cart from "../components/store/Cart";
 import AddSession from "../components/store/AddSession";
+import EditSession from '../components/store/EditSession';
 
 export default function Programmes() {
   const user = {
@@ -17,101 +19,65 @@ export default function Programmes() {
   const sessions = [
     {
       sessionName: "Class 3A",
-      sessionTime: "1100H-1230H",
-      sessionDate: "29 May 2024, Wednesday",
+      sessionTime: "11:00AM",
+      sessionDate: "29 May 2024",
       studentsNum: 30,
       games: [
         {
-          gameTitle: "Game 1",
-          connections: 10,
-          links: [
-            "www.example.com"
-          ],
+          gameId: 0,
+          connections: 10
         },
         {
-          gameTitle: "Game 2",
-          connections: 30,
-          links: [
-            "www.example2.com"
-          ],
+          gameId: 1,
+          connections: 30
         },
         {
-          gameTitle: "Game 3",
-          connections: 3,
-          links: [
-            "www.example3.com",
-            "www.example4.com"
-          ],
+          gameId: 2,
+          connections: 3
         },
         {
-          gameTitle: "Game 4",
-          connections: 4,
-          links: [
-          ],
+          gameId: 3,
+          connections: 4
         },
         {
-          gameTitle: "Game 5",
-          connections: 5,
-          links: [
-            "www.example5.com"
-          ],
+          gameId: 4,
+          connections: 5
         },
         {
-          gameTitle: "Game 6",
-          connections: 6,
-          links: [
-            "www.example6.com"
-          ],
+          gameId: 5,
+          connections: 6
         }
       ]
     },
     {
       sessionName: "Class 3A",
-      sessionTime: "1100H-1230H",
-      sessionDate: "29 May 2024, Wednesday",
+      sessionTime: "10:00AM",
+      sessionDate: "29 May 2024",
       studentsNum: 30,
       games: [
         {
-          gameTitle: "Game 1",
-          connections: 10,
-          links: [
-            "www.example.com"
-          ],
+          gameId: 0,
+          connections: 10
         },
         {
-          gameTitle: "Game 2",
-          connections: 30,
-          links: [
-            "www.example2.com"
-          ],
+          gameId: 1,
+          connections: 30
         },
         {
-          gameTitle: "Game 3",
-          connections: 3,
-          links: [
-            "www.example3.com",
-            "www.example4.com"
-          ],
+          gameId: 2,
+          connections: 3
         },
         {
-          gameTitle: "Game 4",
-          connections: 4,
-          links: [
-          ],
+          gameId: 3,
+          connections: 4
         },
         {
-          gameTitle: "Game 5",
-          connections: 5,
-          links: [
-            "www.example5.com"
-          ],
+          gameId: 4,
+          connections: 5
         },
         {
-          gameTitle: "Game 6",
-          connections: 6,
-          links: [
-            "www.example6.com"
-          ],
+          gameId: 5,
+          connections: 6
         }
       ]
     }
@@ -119,12 +85,24 @@ export default function Programmes() {
 
   const [cart, setCart] = useState([]);
 
+  function getWeekday(sessionDate) {
+    const weekday = new Date(sessionDate).getDay();
+    if(weekday == 1) return "Monday";
+    else if(weekday == 2) return "Tuesday";
+    else if(weekday == 3) return "Wednesday";
+    else if(weekday == 4) return "Thursday";
+    else if(weekday == 5) return "Friday";
+    else if(weekday == 6) return "Saturday";
+    else if(weekday == 7) return "Sunday";
+    else return "";
+  }
+
   const RelevantLinkItem = (props) => {
     const { index, link } = props;
     return(
       <>
-        <p className="text-white/80 text-sm pr-1.5">{index > 0 && ","}</p>
-        <Link href={link} className='text-white/80 text-sm underline underline-offset-4'>{link}</Link>
+        {index > 0 && <p className="text-white/80 text-sm pr-1.5">,</p>}
+        <Link href={link} className='text-white/80 text-sm underline underline-offset-4'>{link.trim()}</Link>
       </>
     )
   }
@@ -189,7 +167,7 @@ export default function Programmes() {
                         </div>
                         <div className='flex space-x-2'>
                           <CardTitle className="text-white text-md">Date:</CardTitle>
-                          <CardDescription className="text-white text-md text-left">{session.sessionDate}</CardDescription>
+                          <CardDescription className="text-white text-md text-left">{session.sessionDate}, {getWeekday(session.sessionDate)}</CardDescription>
                         </div>
                       </CardContent>
                       <CardContent className="flex space-x-1 bg-violet rounded-md p-4 items-center justify-center">
@@ -207,7 +185,7 @@ export default function Programmes() {
                           return (
                             <div key={"session_"+session_index+"_game_"+game_index} className='w-1/2 sm:w-1/3 md:w-1/5 mb-4'>
                               <div className='bg-dark-violet rounded-md mx-1 my-1 min-h-20 flex justify-center items-center relative'>
-                                <CardTitle className="uppercase text-white text-sm">{game.gameTitle}</CardTitle>
+                                <CardTitle className="uppercase text-white text-xs">{games_info[game.gameId].title}</CardTitle>
                                 <div className='border border-white bg-violet rounded-md text-white text-sm justify-center items-center flex space-x-1 absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 py-0.5 min-w-12'>
                                   <span className=''>{game.connections}</span>
                                   <Image src={`/images/Sessions/Connections.png`} alt="Connections Icon" width={16} height={16} className='max-w-none' />
@@ -223,11 +201,11 @@ export default function Programmes() {
                     <CardContent className="bg-violet rounded-md p-3">
                       <CardTitle className="text-white text-md text-left pl-1">Relevant Links</CardTitle>
                       {session.games.map((game, g_index) => {
-                        if(game.links.length > 0) {
+                        if(games_info[game.gameId].links.length > 0) {
                           return (
                             <div key={"session_"+session_index+"_relevant_"+g_index} className='w-full my-2 ml-1 flex flex-wrap'>
-                              <CardDescription className="text-white/80 text-sm mr-2">{game.gameTitle}:</CardDescription>
-                              {game.links.map((link, l_index) => {
+                              <CardDescription className="text-white/80 text-sm mr-2 font-bold">{games_info[game.gameId].title}:</CardDescription>
+                              {games_info[game.gameId].links.map((link, l_index) => {
                                 return (
                                   <RelevantLinkItem key={"session_"+session_index+"_relevant_"+g_index+"_relevant_"+l_index} index={l_index} link={link} />
                                 );

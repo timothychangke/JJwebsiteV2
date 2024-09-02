@@ -102,7 +102,7 @@ export default function Store() {
         <section className="max-w-4xl px-8 py-4">
           <h2 className='text-3xl text-white'>Our Offerings</h2>
           <div className='w-full flex items-start flex-wrap -mt-4'>
-            {games_info[0].data.map((game, gindex) => {
+            {games_info.map((game, gindex) => {
               return (
                 <div key={gindex} className="w-full sm:w-1/2 lg:w-1/3 lg:max-w-xs mb-4 pr-4 mt-10 flex flex-col space-y-8">
                   <GameCard
