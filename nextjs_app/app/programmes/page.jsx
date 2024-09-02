@@ -161,6 +161,7 @@ export default function Programmes() {
           <AddSession></AddSession>
         </section>
 
+        {/* Upcoming Sessions */}
         <section className="max-w-4xl px-8 pb-4 grow flex flex-col">
           <CardDescription className='mb-2 text-dark-grey font-semibold'>Upcoming :</CardDescription>
           {sessions.length == 0 ? (

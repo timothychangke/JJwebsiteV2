@@ -45,9 +45,9 @@ export default function Store() {
         <SideBarContent />
       </div>
       
-      <main className="w-full lg:w-4/5 pt-4">
+      <main className="w-full lg:w-4/5 pt-4 flex flex-col">
         {/* Store */}
-        <section className="max-w-4xl mx-auto px-8 py-4 flex justify-between">
+        <section className="max-w-4xl px-8 py-4 flex justify-between">
           <div className='flex items-center'>
             <Sidebar />
             <h2 className='pl-5 lg:pl-0 text-3xl text-dark-green font-bold'>Store</h2>
@@ -64,7 +64,7 @@ export default function Store() {
         </section>
 
         {/* Create Your Program */}
-        <section className="max-w-4xl mx-auto px-8 py-4">
+        <section className="max-w-4xl px-8 py-4">
           <h2 className='text-3xl text-white mb-5'>Create Your Program</h2>
           <div className="space-y-2 sm:space-y-0 sm:flex sm:space-x-10 items-stretch bg-violet p-5 rounded-md border border-white">
             <Card className="flex flex-col w-full bg-transparent border-0 shadow-none space-y-2">
@@ -99,7 +99,7 @@ export default function Store() {
         </section>
 
         {/* Our Offerings */}
-        <section className="max-w-4xl mx-auto px-8 py-4">
+        <section className="max-w-4xl px-8 py-4">
           <h2 className='text-3xl text-white'>Our Offerings</h2>
           <div className='w-full flex items-start flex-wrap -mt-4'>
             {games_info[0].data.map((game, gindex) => {

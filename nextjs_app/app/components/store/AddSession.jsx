@@ -41,14 +41,13 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from 'react-hot-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { sessionSchema } from '@/schema';
 
 const AddSession = (props) => {
-  const { toast } = useToast();
   const [connections, setConnections] = useState([]);
   const [sessionTime, setSessionTime] = useState("10:00AM");
   
