@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   CardHeader,
-  CardFooter,
 } from '@/components/ui/card';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -17,7 +16,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
 import { loginSchema } from '@/schema';

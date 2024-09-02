@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardDescription, CardTitle } from '@/components/ui/card';
@@ -20,7 +21,7 @@ export default function Programmes() {
     {
       sessionName: "Class 3A",
       sessionTime: "11:00AM",
-      sessionDate: "29 May 2024",
+      sessionDate: "29 November 2025",
       studentsNum: 30,
       games: [
         {
@@ -52,8 +53,8 @@ export default function Programmes() {
     {
       sessionName: "Class 3A",
       sessionTime: "10:00AM",
-      sessionDate: "29 May 2024",
-      studentsNum: 30,
+      sessionDate: "15 May 2024",
+      studentsNum: 19,
       games: [
         {
           gameId: 0,
@@ -62,14 +63,6 @@ export default function Programmes() {
         {
           gameId: 1,
           connections: 30
-        },
-        {
-          gameId: 2,
-          connections: 3
-        },
-        {
-          gameId: 3,
-          connections: 4
         },
         {
           gameId: 4,
@@ -84,6 +77,24 @@ export default function Programmes() {
   ];
 
   const [cart, setCart] = useState([]);
+  const [viewPast, setViewPast] = useState(false);
+  const [displaySessions, setDisplaySessions] = useState([]);
+  const router = useRouter();
+
+  useEffect((() => {
+    const today = new Date();
+    setDisplaySessions(sessions.reduce(function(result, session) {
+      const sessionDate = new Date(session.sessionDate);
+      if (sessionDate >= today || (sessionDate < today && viewPast)) {
+        return result.concat(session);
+      }
+      return result;
+    }, []));
+  }), [viewPast]);
+
+  function togglePastSessions() {
+    setViewPast(!viewPast);
+  }
 
   function getWeekday(sessionDate) {
     const weekday = new Date(sessionDate).getDay();
@@ -93,7 +104,7 @@ export default function Programmes() {
     else if(weekday == 4) return "Thursday";
     else if(weekday == 5) return "Friday";
     else if(weekday == 6) return "Saturday";
-    else if(weekday == 7) return "Sunday";
+    else if(weekday == 0) return "Sunday";
     else return "";
   }
 
@@ -141,19 +152,19 @@ export default function Programmes() {
 
         {/* Upcoming Sessions */}
         <section className="max-w-4xl px-8 pb-4 grow flex flex-col">
-          <CardDescription className='mb-2 text-dark-grey font-semibold'>Upcoming :</CardDescription>
-          {sessions.length == 0 ? (
+          <CardDescription className='mb-2 text-dark-grey font-semibold'>{viewPast ? "All" : "Upcoming"} :</CardDescription>
+          {displaySessions.length == 0 ? (
             <div className='w-full grow flex justify-center items-center text-center'>
               <p className="max-w-56 text-white -mt-10">
                 <span>You do not have any upcoming sessions.</span>
-                <Button variant="ghost" className="underline underline-offset-4 text-white hover:bg-transparent hover:text-white">Check Past Sessions</Button>
+                <Button variant="ghost" className="underline underline-offset-4 text-white hover:bg-transparent hover:text-white" onClick={() => togglePastSessions()}>{viewPast ? "Hide" : "Check"} Past Sessions</Button>
               </p>
             </div>
           ) : (
             <div className='w-full grow flex flex-wrap space-y-4 justify-center items-center text-center'>
-              {sessions.map((session, session_index) => {
+              {displaySessions.map((session, session_index) => {
                 return (
-                  <Card key={"session_"+session_index} className='w-full bg-dark-violet rounded-md p-4 border-0'>
+                  <Card key={"session_"+session_index} className={(new Date(session.sessionDate) < new Date() ? "bg-violet/70 " : "bg-dark-violet ") + 'w-full rounded-md p-4 border-0'}>
                     {/* Session Details */}
                     <CardHeader className="space-y-2 sm:flex-row sm:space-y-0 justify-between items-stretch p-0 mb-4">
                       <CardContent className="grow p-0">
@@ -215,15 +226,20 @@ export default function Programmes() {
                         }
                       })}
                     </CardContent>
-                    
-                    <CardContent className="flex items-center justify-end space-x-4 pr-0 pt-6 pb-2">
-                      <Button className="bg-dark-violet border border-white hover:border-white hover:bg-extra-dark-violet">Edit</Button>
-                      <Button variant="destructive">Delete Session</Button>
-                    </CardContent>
+                    {
+                      new Date(session.sessionDate) < new Date() ? (
+                        <></>
+                      ) : (
+                        <CardContent className="flex items-center justify-end space-x-4 pr-0 pt-6 pb-2">
+                          <EditSession data={session}></EditSession>
+                          <Button variant="destructive">Delete Session</Button>
+                        </CardContent>
+                      )
+                    }
                   </Card>
                 );
               })}
-              <Button variant="ghost" className="underline underline-offset-4 text-white hover:bg-transparent hover:text-white">Check Past Sessions</Button>
+              <Button variant="ghost" className="underline underline-offset-4 text-white hover:bg-transparent hover:text-white" onClick={() => togglePastSessions()}>{viewPast ? "Hide" : "Check"} Past Sessions</Button>
             </div>
           )}
         </section>

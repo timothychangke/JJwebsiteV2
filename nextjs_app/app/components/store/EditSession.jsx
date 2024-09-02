@@ -46,53 +46,61 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { sessionSchema } from '@/schema';
+import { games_info } from "@/public/data/games_info";
 
-const AddSession = (props) => {
+const EditSession = (props) => {
+  const { data } = props;
   const [connections, setConnections] = useState([]);
   const [sessionTime, setSessionTime] = useState("10:00AM");
   
   const form = useForm({
     resolver: zodResolver(sessionSchema),
     defaultValues: {
-      sessionName: '',
-      sessionDate: '',
-      sessionTime: '',
-      studentsNum: 0,
+      sessionName: data.sessionName,
+      sessionDate: data.sessionDate,
+      sessionTime: data.sessionTime,
+      studentsNum: data.studentsNum,
     },
   });
 
   let inventory = [
     {
-        game: "Supermarket Scramble",
-        imgSrc: "SupermarketScramble.png",
-        connections: 30,
+      gameId: 2,
+      connections: 30,
     },
     {
-        game: "Balance the Bistro",
-        imgSrc: "BalanceTheBistro.png",
-        connections: 130,
+      gameId: 3,
+      connections: 130,
     },
     {
-        game: "Runway",
-        imgSrc: "Runway.png",
-        connections: 15,
+      gameId: 0,
+      connections: 15,
     },
     {
-        game: "RecycleMe",
-        imgSrc: "RecycleMe.png",
-        connections: 93,
+      gameId: 1,
+      connections: 93,
     },
     {
-        game: "RecycleMe",
-        imgSrc: "RecycleMe.png",
-        connections: 40,
+      gameId: 4,
+      connections: 40,
+    },
+    {
+      gameId: 5,
+      connections: 20,
     }
   ];
 
   useEffect(() => {
     let array = [];
     inventory.forEach((item) => {
-      array.push(form.getValues().studentsNum);
+      let found = false;
+      data.games.forEach((game) => {
+        if(game.gameId == item.gameId) {
+          array.push(game.connections);
+          found = true;
+        }
+      });
+      if(!found) array.push(0);
     });
     setConnections(array);
   }, []);
@@ -133,9 +141,9 @@ const AddSession = (props) => {
       if (!response.ok) {
         const errorData = await response.json();
         toast.error(errorData.error);
-        throw new Error(errorData.error || 'Failed to create session');
+        throw new Error(errorData.error || 'Failed to save session');
       }
-      toast.success('Session created successfully');
+      toast.success('Session saved successfully');
       router.push("/programmes")
     } catch (err) {
       console.log(err);
@@ -146,20 +154,20 @@ const AddSession = (props) => {
 
   return (
     <Dialog>
-      <DialogTrigger className='relative hover:bg-transparent p-0'>
-        <div className='text-white relative p-0'>Add a Session +<span className='absolute h-px w-full bg-white bottom-0 right-0'></span></div>
+      <DialogTrigger className='bg-transparent border rounded-lg border-white hover:border-white hover:bg-extra-dark-violet/80 text-white py-2 px-4'>
+        Edit
       </DialogTrigger>
 
       <DialogContent className="bg-violet border-0 text-white max-w-[900px] max-h-screen overflow-y-auto flex flex-col items-stretch">
         <DialogHeader className="mt-3">
-          <DialogTitle className="text-2xl">Add a Session</DialogTitle>
+          <DialogTitle className="text-2xl">Edit Session</DialogTitle>
         </DialogHeader>
 
         {/* Enter Sessions Details */}
         <section className='flex flex-col space-x-0 space-y-5 md:space-x-5 md:space-y-0 md:flex-row justify-center mb-2'>
           <Card className="bg-transparent border-0 shadow-none grow">
             <CardHeader className="p-0 m-0 mb-3">
-              <CardTitle className="text-lg text-white">Enter Sessions Details</CardTitle>
+              <CardTitle className="text-lg text-white">Sessions Details</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col space-y-3 mt-2 p-0">
               <Form {...form}>
@@ -268,7 +276,7 @@ const AddSession = (props) => {
           {/* Add Purchased Products */}
           <Card className="bg-transparent border-0 shadow-none">
             <CardHeader className="p-0 m-0 mb-3">
-              <CardTitle className="text-lg text-white">Add Your Purchased Products</CardTitle>
+              <CardTitle className="text-lg text-white">Edit Products Connections</CardTitle>
             </CardHeader>
             <div className="rounded-t-sm border-x border-t">
               <Table>
@@ -291,9 +299,9 @@ const AddSession = (props) => {
                       <TableRow className="border-dull-blue" key={index}>
                         <TableCell className="flex items-center space-x-2 py-2">
                           {item.imgSrc && (
-                            <Image src={`/images/Homepage/${item.imgSrc}`} alt={item.name + " icon"} width={25} height={25} />
+                            <Image src={`/images/Homepage/${games_info[item.gameId].imgSrc}`} alt={item.name + " icon"} width={25} height={25} />
                           )}
-                          <span>{item.game}</span>
+                          <span>{games_info[item.gameId].title}</span>
                         </TableCell>
                         <TableCell className="py-2 items-center text-center font-semibold">
                           {item.connections - connections[index]}
@@ -335,7 +343,7 @@ const AddSession = (props) => {
                     return (
                       <TableRow className={style} key={index}>
                         <TableCell className="py-1">
-                          {index+1}. {item.game}
+                          {index+1}. {games_info[item.gameId].title}
                         </TableCell>
                         <TableCell className="py-1 items-center text-center">
                           {connections[index]}
@@ -349,10 +357,10 @@ const AddSession = (props) => {
           </Card>
         </section>
 
-        <Button className="bg-dark-violet hover:bg-extra-dark-violet border border-white px-10 self-center">Confirm Session</Button>
+        <Button className="bg-dark-violet hover:bg-extra-dark-violet border border-white px-10 self-center">Save</Button>
       </DialogContent>
     </Dialog>
   );
 }
 
-export default AddSession;
+export default EditSession;

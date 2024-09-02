@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Cart from "../components/store/Cart";
 import { SideBarHeader, SideBarContent, Sidebar } from '../components/store/Sidebar';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { games_info } from "@/public/data/games_info";
 
 export default function MyPurchases() {
   const user = {
@@ -12,24 +13,20 @@ export default function MyPurchases() {
   };
   const purchases = [
     {
-        game: "Supermarket Scramble",
-        imgSrc: "SupermarketScramble.png",
-        connections: 30,
+      gameId: 0,
+      connections: 30,
     },
     {
-        game: "Balance the Bistro",
-        imgSrc: "BalanceTheBistro.png",
-        connections: 130,
+      gameId: 1,
+      connections: 130,
     },
     {
-        game: "Runway",
-        imgSrc: "Runway.png",
-        connections: 15,
+      gameId: 2,
+      connections: 15,
     },
     {
-        game: "RecycleMe",
-        imgSrc: "RecycleMe.png",
-        connections: 93,
+      gameId: 3,
+      connections: 93,
     }
   ];
 
@@ -86,12 +83,12 @@ export default function MyPurchases() {
                         {(index>8 ? index+1 : "0"+(index+1))}
                       </TableCell>
                       <TableCell className="flex items-center space-x-2 py-2">
-                        {item.imgSrc && (
+                        {games_info[item.gameId].imgSrc && (
                           <div className="bg-white rounded-md p-1">
-                            <Image src={`/images/Homepage/${item.imgSrc}`} alt={item.name + " icon"} width={25} height={25} />
+                            <Image src={`/images/Homepage/${games_info[item.gameId].imgSrc}`} alt={games_info[item.gameId].title + " icon"} width={25} height={25} />
                           </div>
                         )}
-                        <span>{item.game}</span>
+                        <span>{games_info[item.gameId].title}</span>
                       </TableCell>
                       <TableCell className="py-2 items-center text-center">
                         {item.connections}

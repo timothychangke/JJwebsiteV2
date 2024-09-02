@@ -26,7 +26,7 @@ export default function Store() {
   function addToCart(game) {
     const obj = {
       "name": game.title,
-      "imgSrc": game.image,
+      "imgSrc": game.imgSrc,
       "connections": game.connections,
       "price": game.price,
     };
@@ -107,7 +107,7 @@ export default function Store() {
                 <div key={gindex} className="w-full sm:w-1/2 lg:w-1/3 lg:max-w-xs mb-4 pr-4 mt-10 flex flex-col space-y-8">
                   <GameCard
                     index={gindex}
-                    image={game.image}
+                    image={game.imgSrc}
                     title={game.title}
                     description={game.description}
                     values={game.values}

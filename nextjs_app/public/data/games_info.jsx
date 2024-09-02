@@ -1,7 +1,7 @@
 export const games_info = [
   {
     "id": 0,
-    "image": "Runway.png",
+    "imgSrc": "Runway.png",
     "title": "Runway",
     "description": "Learn to balance your budget and your environmental impact",
     "values":["Fast Fashion","Budgeting","Decision-Making"],
@@ -16,7 +16,7 @@ export const games_info = [
   },
   {
     "id": 1,
-    "image": "RecycleMe.png",
+    "imgSrc": "RecycleMe.png",
     "title": "RecycleMe",
     "description": "Learn to recycle in a competitive “Overcooked” style game",
     "values":["Recycling Literacy","Materials Identification"],
@@ -29,7 +29,7 @@ export const games_info = [
   },
   {
     "id": 2,
-    "image": "SupermarketScramble.png",
+    "imgSrc": "SupermarketScramble.png",
     "title": "Supermarket Scramble",
     "description": "Learn to budget, empathise and prioritise in a real-world scenario",
     "values":["Financial Literacy","Social Inequality","Budgeting"],
@@ -44,7 +44,7 @@ export const games_info = [
   },
   {
     "id": 3,
-    "image": "BalanceTheBistro.png",
+    "imgSrc": "BalanceTheBistro.png",
     "title": "Balance the Bistro",
     "description": "Learn to be aware of the biases and issues that lead to food waste",
     "values":["Food Waste","Educated Judgements","Contextual Clueing"],
@@ -58,7 +58,7 @@ export const games_info = [
   },
   {
     "id": 4,
-    "image": "",
+    "imgSrc": "",
     "title": "Environment & Sustainability World",
     "description": "Learn how your everyday actions impact our world and learn sustainable living practices!",
     "values":["Fast Fashion","Recycling Literacy","Food Waste"],
@@ -73,7 +73,7 @@ export const games_info = [
   },
   {
     "id": 5,
-    "image": "",
+    "imgSrc": "",
     "title": "Social Inequality World",
     "description": "Learn about social inequality through the lens of someone from a low income background",
     "values":["Decision-Making","Opportunity Cost"],
