@@ -18,13 +18,13 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form';
-import { loginSchema } from '@/schema';
+import { resetPasswordSchema } from '@/schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
-const LoginPage = () => {
+const ForgetPasswordPage = () => {
   // const { googleSignIn } = UserAuth();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -36,15 +36,14 @@ const LoginPage = () => {
     }
   };
   const form = useForm({
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
       email: '',
-      password: '',
     },
   });
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch('/api/auth/resetpassword', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,12 +53,12 @@ const LoginPage = () => {
       if (!response.ok) {
         const errorData = await response.json();
         toast.error(errorData.error);
-        throw new Error(errorData.error || 'Failed to login');
+        throw new Error(errorData.error || 'Failed to reset password');
       }
       console.log(response)
-      toast.success('Login successful');
+      toast.success('Reset password instructions sent to your email');
       //need to dispatch resopnse into redux store
-      router.push("/")
+      router.push("/login")
     } catch (err) {
       console.log(err);
     } finally {
@@ -73,12 +72,11 @@ const LoginPage = () => {
         <CardHeader>
           <div className="w-full flex flex-col gap-y-3 items-center justify-center text-white text-center">
             <Image alt="Jalan Journey logo" className='' src={"/images/Login/Signin_Logo.png"} width={125} height={125}></Image>
-            <h1 className="text-4xl font-semibold">Welcome Back!</h1>
-            <p className="text-sm">Time to continue Your Journey</p>
+            <h1 className="text-4xl font-semibold">Reset Password</h1>
           </div>
         </CardHeader>
         <CardContent className="flex flex-col items-center justify-center pb-1">
-          <p className="text-xs text-white mt-2">Log In to continue</p>
+          <p className="text-xs text-white mt-2">Enter registered e-mail address to continue</p>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
@@ -101,26 +99,9 @@ const LoginPage = () => {
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        type="password"
-                        placeholder="Password*"
-                        className="py-2 h-auto"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Link href="/forget-password" className="underline text-white text-xs font-bold ml-1 underline-offset-2">Forgot password?</Link>
+              <Link href="/login" className="underline text-white text-xs font-bold ml-1 underline-offset-2">{"< Back to Login"}</Link>
               <Button type="submit" className="text-white bg-dark-green border-white border-[3px] mx-auto px-7">
-                Log In
+                Reset Password
               </Button>
             </form>
           </Form>
@@ -149,4 +130,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ForgetPasswordPage;
