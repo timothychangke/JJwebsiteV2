@@ -1,10 +1,12 @@
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { homepage_content } from "@/public/data/homepage_content";
 import { ResponsiveImage } from "../ResponsiveImage";
 
 const ContentSection = () => {
     const info = homepage_content;
+    const router = useRouter();
     return (
         <>
             <h2 className='text-3xl text-center text-white font-bold'>{info.title}</h2>
@@ -16,7 +18,7 @@ const ContentSection = () => {
                             <div className='text-center px-3 pt-2'>
                                 <h3 className='text-xl font-bold'>{item.heading}</h3>
                                 <p className='text-black pt-2'>{item.description}</p>
-                                <Button className='mt-4 mb-2 font-bold border-violet border-2 rounded-lg bg-transparent text-violet hover:border-dark-violet hover:text-dark-violet hover:bg-transparent uppercase'>Explore</Button>
+                                <Button onClick={() => router.push(item.slug)} className='mt-4 mb-2 font-bold border-violet border-2 rounded-lg bg-transparent text-violet hover:border-dark-violet hover:text-dark-violet hover:bg-transparent uppercase'>Explore</Button>
                             </div>
                         </div>
                     )

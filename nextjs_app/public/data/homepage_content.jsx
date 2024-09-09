@@ -7,7 +7,9 @@ export const homepage_content = {
         "desktop": "Institutions.png"
       },
       "heading": "Institutions",
-      "description": "Level up classroom learning with play"
+      "slug":"institutions",
+      "description": "Level up classroom learning with play",
+      "gamesId": [0, 1, 2, 3, 4, 5]
     },
     {
       "imgSrc": {
@@ -15,7 +17,9 @@ export const homepage_content = {
         "desktop": "Organisations.png"
       },
       "heading": "Organisations",
-      "description": "Empower your team and community"
+      "slug":"organisations",
+      "description": "Empower your team and community",
+      "gamesId": [0, 3, 4, 5]
     },
     {
       "imgSrc": {
@@ -23,7 +27,9 @@ export const homepage_content = {
         "desktop": "Individuals.png"
       },
       "heading": "Individuals",
-      "description": "Unlock the potential of personalised education"
+      "slug":"individuals",
+      "description": "Unlock the potential of personalised education",
+      "gamesId": [1, 2, 4, 5]
     }
   ]
 }

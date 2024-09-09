@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import HeroSection from "./components/homepage/HeroSection";
 import EngagementSection from "./components/homepage/EngagementSection";
@@ -6,6 +9,12 @@ import CatalogueSection from "./components/homepage/CatalogueSection";
 import ContentSection from './components/homepage/ContentSection';
 
 export default function Home() {
+  const router = useRouter();
+
+  function createAccount(){
+    router.push("/signup")
+  }
+
   return (
     <main className="h-5/6 bg-slate-200 font-light">
       {/* Hero */}
@@ -58,7 +67,7 @@ export default function Home() {
         <div className='max-w-3xl sm:flex m-auto relative z-20'>
           <div className='w-3/4 mx-auto sm:max-w-80 text-center sm:text-right mt-3'>
             <h5 className='text-4xl text-white mb-8 md:font-bold' style={{ textShadow: `3px 3px #1B6261` }}>Join us in<br/>inspiring the Change Makers<br/>of tomorrow.</h5>
-            <Button className='text-3xl p-8 sm:py-0 sm:text-sm rounded-md bg-dark-green border-2 border-white text-white mb-10 sm:mb-0'>Create an account</Button>
+            <Button className='text-3xl p-8 sm:py-0 sm:text-sm rounded-md bg-dark-green border-2 border-white text-white mb-10 sm:mb-0' onClick={() => createAccount()}>Create an account</Button>
           </div>
           <div className='flex flex-wrap text-white text-center justify-center sm:justify-end'>
             <div className='w-5/12 rounded-2xl border-2 border-white px-4 py-5 m-3'>
