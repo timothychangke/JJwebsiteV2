@@ -14,7 +14,7 @@ const ContentSection = () => {
                 {info.content.map((item, index) => {
                     return (
                         <div key={index} className="md:w-1/2 lg:w-1/3 bg-beige border-dark-green border-[6px] rounded-lg flex flex-col items-center p-4">
-                            <ResponsiveImage mobileSrc={item.imgSrc.mobile} desktopSrc={item.imgSrc.desktop} mobileSize={100} desktopSize={150} />
+                            <ResponsiveImage mobileSrc={`/images/Homepage/${item.imgSrc.mobile}`} desktopSrc={`/images/Homepage/${item.imgSrc.desktop}`} mobileSize={100} desktopSize={150} />
                             <div className='text-center px-3 pt-2'>
                                 <h3 className='text-xl font-bold'>{item.heading}</h3>
                                 <p className='text-black pt-2'>{item.description}</p>

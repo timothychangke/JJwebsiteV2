@@ -22,6 +22,7 @@ export default function Store() {
   };
 
   const [cart, setCart] = useState([]);
+  const [cartOpen, setCartOpen] = useState(false);
 
   function addToCart(game) {
     const obj = {
@@ -59,7 +60,7 @@ export default function Store() {
             <div className="rounded-full w-10 overflow-hidden flex items-center">
               <Image alt="User Icon" className='' src={`/images/Store/${user.dpSrc}`} width={80} height={80}></Image>
             </div>
-            <Cart cart={cart} setCart={setCart} />
+            <Cart cart={cart} setCart={setCart} cartOpen={cartOpen} setCartOpen={setCartOpen} />
           </div>
         </section>
 
@@ -94,27 +95,31 @@ export default function Store() {
           </div>
           <div className="flex w-full justify-center p-0 space-x-3 mt-5">
             <Button className="bg-dark-violet border border-white hover:border-white hover:bg-extra-dark-violet">Modify your Program</Button>
-            <Button className="bg-dark-green border border-white hover:border-white hover:bg-extra-dark-green">Confirm your Order</Button>
+            <Button onClick={() => setCartOpen(true)} className="bg-dark-green border border-white hover:border-white hover:bg-extra-dark-green">Confirm your Order</Button>
           </div>
         </section>
 
         {/* Our Offerings */}
         <section className="max-w-4xl px-8 py-4">
           <h2 className='text-3xl text-white'>Our Offerings</h2>
-          <div className='w-full flex items-start flex-wrap -mt-4'>
+          <div className='w-full flex items-start flex-wrap -mt-2 mb-8'>
             {games_info.map((game, gindex) => {
               return (
-                <div key={gindex} className="w-full sm:w-1/2 lg:w-1/3 lg:max-w-xs mb-4 pr-4 mt-10 flex flex-col space-y-8">
+                <div key={gindex} className="w-full sm:w-1/2 lg:w-1/3 lg:max-w-xs pr-4 mt-8 flex flex-col space-y-7">
                   <GameCard
                     index={gindex}
-                    image={game.imgSrc}
+                    imgSrc={game.imgSrc}
                     title={game.title}
                     description={game.description}
                     values={game.values}
-                    button={game.button}>
+                    dialog={true}
+                    cart={cart}
+                    setCart={setCart}
+                    cartOpen={cartOpen}
+                    setCartOpen={setCartOpen}>
                   </GameCard>
                   <div className='flex justify-center'>
-                    <Button onClick={() => addToCart(game)} className='w-40 text-lg font-light text-center border-white border-2 rounded-lg bg-transparent text-white hover:border-white hover:text-white hover:bg-violet/20'><p>Add to Cart</p></Button>
+                    <Button onClick={() => addToCart(game)} className='w-30 text-lg font-light text-center border-white border-2 rounded-lg bg-transparent text-white hover:border-white hover:text-white hover:bg-violet/20'>Add to Cart</Button>
                   </div>
                 </div>
               )
