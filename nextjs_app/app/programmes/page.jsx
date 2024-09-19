@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardDescription, CardTitle } from '@/com
 import { games_info } from "@/public/data/games_info";
 import { SideBarHeader, SideBarContent, Sidebar } from '../components/store/Sidebar';
 import Cart from "../components/store/Cart";
-import AddSession from "../components/store/AddSession";
+import AddProgramme from "../components/store/AddProgramme";
 import EditSession from '../components/store/EditSession';
 
 export default function Programmes() {
@@ -144,13 +144,13 @@ export default function Programmes() {
           </div>
         </section>
 
-        {/* My Sessions */}
+        {/* My Programme */}
         <section className="max-w-4xl px-8 py-4 flex justify-between">
-          <h2 className='text-3xl text-white'>My Sessions</h2>
-          <AddSession></AddSession>
+          <h2 className='text-3xl text-white'>My Programme</h2>
+          <AddProgramme></AddProgramme>
         </section>
 
-        {/* Upcoming Sessions */}
+        {/* Upcoming Programme */}
         <section className="max-w-4xl px-8 pb-4 grow flex flex-col">
           <CardDescription className='mb-2 text-dark-grey font-semibold'>{viewPast ? "All" : "Upcoming"} :</CardDescription>
           {displaySessions.length == 0 ? (

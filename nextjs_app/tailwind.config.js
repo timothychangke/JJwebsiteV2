@@ -28,6 +28,7 @@ module.exports = {
         "normal-green": "#91BA60",
         "light-green": "#A2C17C",
         "violet": "#674C93",
+        "dull-violet": "#3B2A57",
         "dark-violet": "#482b77",
         "extra-dark-violet": "#3B2A57",
         "light-violet": "#A48DC8",

@@ -16,7 +16,7 @@ const CheckoutConfirmation = (props) => {
   return (
     <Dialog>
       <DialogTrigger className='w-min mx-auto'>
-        <Button className="mt-3 bg-dark-violet border-white border hover:bg-extra-dark-violet justify-self-center">Checkout</Button>
+        <Button className="mt-3 bg-dull-violet border-white border hover:bg-white/5 justify-self-center">Checkout</Button>
       </DialogTrigger>
 
       <DialogContent className="bg-dark-violet border-violet max-w-96">
