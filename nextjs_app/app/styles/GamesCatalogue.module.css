@@ -1,0 +1,158 @@
+.container {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #674C93;
+  }
+  
+  .header {
+    color: white;
+    padding: 1rem;
+  }
+  
+  
+  .logo img {
+    width: 50px;
+  }
+  
+  .menu a {
+    color: white;
+    margin-right: 1rem;
+    text-decoration: none;
+  }
+  
+  .auth button {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #00aaff;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .banner {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background: linear-gradient(to top, #674c93bb, #674c93bb), url('/images/FrameChildrenThinking.svg');
+    background-size: cover, cover;
+    background-position: center, center;
+    margin-bottom: -2rem;
+  }
+
+  .main {
+    text-align: left;
+    color: white;
+  }
+  
+  .main h1 {
+    margin-top:-1.8rem;
+    margin-bottom: 0.5rem;
+    padding-left: 2rem;
+    font-size: 4rem;
+    font-weight: bolder;
+  }
+  
+  .main h2 {
+    margin-bottom: 0.5rem;
+    padding-left: 2rem;
+    font-size: 3.5rem;
+  }
+
+  .selector {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.2rem;
+    z-index: 1001;
+  }
+
+  .tabs button {
+    flex: 1; 
+    margin: 0 0.2rem;
+    border: 2px solid transparent;
+    background-color: #8f918e; 
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-width: 0.3rem;
+    border-color: #49494a;
+    color: #494a47; 
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    min-width: 150px;
+    max-width: 500px;
+    font-weight: bold;
+    font-size: 1.8rem;
+  }
+  
+  .tabs button.active {
+    background-color: #694b92;
+    color: white;
+    border-color: white;
+  }
+  
+  .tabs button:hover {
+    background-color: rgb(113, 97, 212);
+    color: white;
+    border-color: white;
+  }
+
+  .games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .game {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    margin: 1rem;
+    padding: 1rem;
+    width: 200px;
+    text-align: left;
+  }
+  
+  .game h3 {
+    margin-top: 0;
+  }
+  
+  .game ul {
+    padding-left: 1.5rem;
+  }
+
+  
+  .footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: #2d2f39;
+    color: white;
+    padding: 2rem;
+  }
+  
+  .footerColumn {
+    text-align: left;
+  }
+  
+  .footerColumn h4 {
+    margin-bottom: 1rem;
+  }
+  
+  .footerColumn ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footerColumn ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footerColumn ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  

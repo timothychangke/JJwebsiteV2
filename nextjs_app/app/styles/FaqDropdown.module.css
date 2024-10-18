@@ -1,0 +1,49 @@
+  .dropdown {
+    width:80vw;
+    margin-bottom: 0.3vw;
+  }
+
+  .dropdownMainBtn {
+    width: 100%;
+    background-color: #8A74A5;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem; 
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dropdownSubBtn {
+    width: 100%;
+    background-color: #967BC2;
+    font-size: 1.5rem;
+    padding: 1rem; 
+    color: white;
+    text-align: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dropdownContent {
+    color: rgb(255, 255, 255);
+    background-color: #B29FD1;
+    font-size: 1.2rem;
+  }
+
+  .dropdownContent p {
+    margin: 0;
+    padding: 1rem; 
+  }
+
+  .faqContainer {
+    margin: auto;
+    padding: 20px;
+  }
+  
