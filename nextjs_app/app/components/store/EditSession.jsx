@@ -298,8 +298,8 @@ const EditSession = (props) => {
                     return (
                       <TableRow className="border-dull-blue" key={index}>
                         <TableCell className="flex items-center space-x-2 py-2">
-                          {item.imgSrc && (
-                            <Image src={`/images/Homepage/${games_info[item.gameId].imgSrc}`} alt={item.name + " icon"} width={25} height={25} />
+                          {games_info[item.gameId].imgSrc && (
+                            <Image src={`/images/Games/${games_info[item.gameId].imgSrc}`} alt={item.name + " icon"} width={25} height={25} />
                           )}
                           <span>{games_info[item.gameId].title}</span>
                         </TableCell>

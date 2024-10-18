@@ -85,7 +85,7 @@ export default function MyPurchases() {
                       <TableCell className="flex items-center space-x-2 py-2">
                         {games_info[item.gameId].imgSrc && (
                           <div className="bg-white rounded-md p-1">
-                            <Image src={`/images/Homepage/${games_info[item.gameId].imgSrc}`} alt={games_info[item.gameId].title + " icon"} width={25} height={25} />
+                            <Image src={`/images/Games/${games_info[item.gameId].imgSrc}`} alt={games_info[item.gameId].title + " icon"} width={25} height={25} />
                           </div>
                         )}
                         <span>{games_info[item.gameId].title}</span>

@@ -47,7 +47,7 @@ import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { sessionSchema } from '@/schema';
 
-const AddSession = (props) => {
+const AddProgramme = (props) => {
   const [connections, setConnections] = useState([]);
   const [sessionTime, setSessionTime] = useState("10:00AM");
   
@@ -144,28 +144,32 @@ const AddSession = (props) => {
     }
   };
 
+  function addProgramme() {
+    // todo
+  }
+
   return (
     <Dialog>
       <DialogTrigger className='relative hover:bg-transparent p-0'>
-        <div className='text-white relative p-0'>Add a Session +<span className='absolute h-px w-full bg-white bottom-0 right-0'></span></div>
+        <div className='text-white relative p-0'>Add a Programme +<span className='absolute h-px w-full bg-white bottom-0 right-0'></span></div>
       </DialogTrigger>
 
-      <DialogContent className="bg-violet border-0 text-white max-w-[900px] max-h-screen overflow-y-auto flex flex-col items-stretch">
+      <DialogContent className="bg-dull-violet border-0 text-white max-w-[900px] max-h-screen overflow-y-auto flex flex-col items-stretch">
         <DialogHeader className="mt-3">
-          <DialogTitle className="text-2xl">Add a Session</DialogTitle>
+          <DialogTitle className="text-2xl">Add a Programme</DialogTitle>
         </DialogHeader>
 
-        {/* Enter Sessions Details */}
+        {/* Enter Programme Details */}
         <section className='flex flex-col space-x-0 space-y-5 md:space-x-5 md:space-y-0 md:flex-row justify-center mb-2'>
           <Card className="bg-transparent border-0 shadow-none grow">
             <CardHeader className="p-0 m-0 mb-3">
-              <CardTitle className="text-lg text-white">Enter Sessions Details</CardTitle>
+              <CardTitle className="text-lg text-white">Enter Programme Details</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col space-y-3 mt-2 p-0">
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-3 pt-3 w-full justify-center flex flex-col">
+                  className="space-y-3 w-full justify-center flex flex-col">
                     <FormField
                       control={form.control}
                       name="sessionName"
@@ -291,7 +295,7 @@ const AddSession = (props) => {
                       <TableRow className="border-dull-blue" key={index}>
                         <TableCell className="flex items-center space-x-2 py-2">
                           {item.imgSrc && (
-                            <Image src={`/images/Homepage/${item.imgSrc}`} alt={item.name + " icon"} width={25} height={25} />
+                            <Image src={`/images/Games/${item.imgSrc}`} alt={item.name + " icon"} width={25} height={25} />
                           )}
                           <span>{item.game}</span>
                         </TableCell>
@@ -313,7 +317,7 @@ const AddSession = (props) => {
             </div>
             <div className='bg-light-violet border-x'>
               <h5 className='p-0 relative inline-block mt-3 mb-1 mx-4 text-sm text-black/70 font-semibold'>
-                Session Summary
+                Programme Summary
               </h5>
             </div>
             <div className="bg-light-violet rounded-b-md border-x border-b">
@@ -349,10 +353,10 @@ const AddSession = (props) => {
           </Card>
         </section>
 
-        <Button className="bg-dark-violet hover:bg-extra-dark-violet border border-white px-10 self-center">Confirm Session</Button>
+        <Button className="bg-dull-violet hover:bg-extra-dark-violet border border-white px-10 self-center" onClick={() => addProgramme()}>Confirm</Button>
       </DialogContent>
     </Dialog>
   );
 }
 
-export default AddSession;
+export default AddProgramme;

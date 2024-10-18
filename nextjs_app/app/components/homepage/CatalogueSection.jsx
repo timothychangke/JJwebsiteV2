@@ -34,7 +34,7 @@ const CatalogueSection = () => {
                                         return (
                                             <CarouselItem className="sm:basis-1/2 md:basis-1/3 mb-5" key={gindex}>
                                                 <GameCard 
-                                                    image={games_info[id].imgSrc}
+                                                    imgSrc={games_info[id].imgSrc}
                                                     title={games_info[id].title}
                                                     description={games_info[id].description}
                                                     values={games_info[id].values}
